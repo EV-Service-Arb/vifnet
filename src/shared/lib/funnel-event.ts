@@ -4,11 +4,13 @@ import { bookingRequestedProperties, channelOf, leadRef, type BookingRequest, ty
 import {
   panelChannel,
   panelFlowProperties,
+  panelLocaleProperties,
   type BookingWebhookContext,
   type PanelChannel,
   type LeadWebhookContext,
   type LeadWebhookOptions,
   type PanelFlowProperties,
+  type PanelLocale,
   type WebhookSigning,
 } from "@evinvest/kitstart/server";
 import { isSubject, PANEL_NEED } from "@/shared/config/lead";
@@ -79,6 +81,15 @@ export const PANEL_EXPERIMENTS = true;
 export const PANEL_MESSENGER = true;
 
 /**
+ * Whether `lead.created` carries `properties.locale` — `fr` or `en`, the
+ * language of the page the visitor posted from (kitstart's `panelLocale`). On
+ * since the panel v0.9.0 accepts the property (Service-Arb/panel#38). Should
+ * the site ship before that panel is in production, the panel refuses the
+ * unknown property and the lead goes `dead` in the outbox.
+ */
+export const PANEL_LOCALE = true;
+
+/**
  * `lead.created@1` as protojson — `sa.v1.Event` with `LeadCreatedV1` for
  * properties (Service-Arb/panel `contracts/proto/sa/v1/events.proto`).
  */
@@ -100,9 +111,10 @@ export interface LeadCreatedEvent {
    * under `PANEL_ANALYTICS_ID`: the visit's analytics `distinct_id` as the
    * form posted it (kitstart checks its charset), no PII. `message_ref` only
    * under `PANEL_MESSENGER`, on a lead that has one: the reference the
-   * visitor's chat carries (`VF-7K3F`), no PII.
+   * visitor's chat carries (`VF-7K3F`), no PII. `locale` only under
+   * `PANEL_LOCALE`, and only when the kit set `ctx.panelLocale`.
    */
-  properties: { channel: PanelChannel; suspect?: LeadSuspect; analytics_id?: string; message_ref?: string } & Partial<PanelFlowProperties>;
+  properties: { channel: PanelChannel; suspect?: LeadSuspect; analytics_id?: string; message_ref?: string; locale?: PanelLocale } & Partial<PanelFlowProperties>;
   pii?: Record<string, string>;
 }
 
@@ -221,7 +233,7 @@ export function leadCreatedBody(lead: Lead, ctx: LeadWebhookContext, sourceId: s
   if (analyticsId && ctx.analyticsId) event.properties.analytics_id = ctx.analyticsId;
   // Set by the kit only under `panelMessenger`, on a lead that has one.
   if (ctx.messageRef) event.properties.message_ref = ctx.messageRef;
-  Object.assign(event.properties, panelFlowProperties(ctx.flow));
+  Object.assign(event.properties, panelFlowProperties(ctx.flow), panelLocaleProperties(ctx.panelLocale));
   const pii = piiOf(lead);
   if (Object.keys(pii).length > 0) event.pii = pii;
   return { events: [event] };
@@ -252,6 +264,7 @@ export interface PanelSwitches {
   panelBooking: boolean;
   panelAnalyticsId: boolean;
   panelMessenger: boolean;
+  panelLocale: boolean;
 }
 
 export const PANEL_SWITCHES: PanelSwitches = {
@@ -260,6 +273,7 @@ export const PANEL_SWITCHES: PanelSwitches = {
   panelBooking: PANEL_BOOKING,
   panelAnalyticsId: PANEL_ANALYTICS_ID,
   panelMessenger: PANEL_MESSENGER,
+  panelLocale: PANEL_LOCALE,
 };
 
 /**
@@ -271,7 +285,7 @@ export const PANEL_SWITCHES: PanelSwitches = {
 export function panelWebhookOptions(
   keyId: string,
   switches: Partial<PanelSwitches> = {},
-): Pick<LeadWebhookOptions, "signing" | "buildBody" | "buildBookingBody" | "panelSuspect" | "panelFlow" | "panelBooking" | "panelMessenger"> {
+): Pick<LeadWebhookOptions, "signing" | "buildBody" | "buildBookingBody" | "panelSuspect" | "panelFlow" | "panelBooking" | "panelMessenger" | "panelLocale"> {
   const { panelAnalyticsId, ...kit } = { ...PANEL_SWITCHES, ...switches };
   return {
     signing: SA_INGEST_SIGNING,
