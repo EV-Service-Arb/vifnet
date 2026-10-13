@@ -8,7 +8,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { TEXT } from "@/entities/content";
 import { PANEL_NEED, SUBJECTS } from "@/shared/config/lead";
 import { site } from "@/shared/config/site";
-import { isOpaqueId, leadCreatedBody, PANEL_ANALYTICS_ID, PANEL_FLOW, PANEL_LOCALE, PANEL_MESSENGER, PANEL_SUSPECT, panelLeadId, panelWebhookOptions, SA_INGEST_SIGNING, uuidV7 } from "@/shared/lib/funnel-event";
+import { isOpaqueId, leadCreatedBody, PANEL_ANALYTICS_ID, PANEL_FLOW, PANEL_MESSENGER, PANEL_SUSPECT, panelLeadId, panelWebhookOptions, SA_INGEST_SIGNING, uuidV7 } from "@/shared/lib/funnel-event";
 
 const lead: Lead = {
   subject: "deep",
@@ -224,7 +224,6 @@ describe("the lead webhook, wired as the site wires it", () => {
     options: ReturnType<typeof panelWebhookOptions>,
     leads: readonly Lead[],
     meta: { analyticsId?: string } = {},
-    locale = "fr",
   ): Promise<{ panelSuspect: boolean; bodies: unknown[] }> {
     dir = mkdtempSync(join(tmpdir(), "vifnet-hook-"));
     const env = parseServerEnv(site, {
@@ -244,7 +243,7 @@ describe("the lead webhook, wired as the site wires it", () => {
     });
     if (!hook) throw new Error("the webhook should be on");
     try {
-      leads.forEach((l, i) => hook.enqueue(l, i + 1, { locale, formId: "quote", ...meta }));
+      leads.forEach((l, i) => hook.enqueue(l, i + 1, { locale: "fr", formId: "quote", ...meta }));
       await hook.tick();
       return { panelSuspect: hook.panelSuspect, bodies };
     } finally {
@@ -252,12 +251,8 @@ describe("the lead webhook, wired as the site wires it", () => {
     }
   }
 
-  /**
-   * One event whose properties are exactly these: a `suspect` key that should
-   * not be there fails it. `delivered` posts from the `fr` page and the site
-   * ships `PANEL_LOCALE` on, so `locale: "fr"` is part of every body.
-   */
-  const withProperties = (properties: Record<string, unknown>) => ({ events: [expect.objectContaining({ properties: { locale: "fr", ...properties } })] });
+  /** One event whose properties are exactly these: a `suspect` key that should not be there fails it. */
+  const withProperties = (properties: Record<string, unknown>) => ({ events: [expect.objectContaining({ properties })] });
   const fast: Lead = { ...lead, spamVerdict: "too-fast" };
   const limited: Lead = { ...lead, spamVerdict: "rate-limited" };
   const trapped: Lead = { ...lead, spamVerdict: "honeypot" };
@@ -332,23 +327,6 @@ describe("the lead webhook, wired as the site wires it", () => {
     ]);
     const off = await delivered(panelWebhookOptions("vifnet-site", { panelMessenger: false }), [whatsapp, telegram]);
     expect(off.bodies).toEqual([withProperties({ channel: "form" }), withProperties({ channel: "form" })]);
-  });
-
-  // Service-Arb/panel#38: on since panel v0.9.0 accepts `locale`.
-  it("sends the page's language as properties.locale, fr or en, and none with the switch off", async () => {
-    expect(PANEL_LOCALE).toBe(true);
-    const fr = await delivered(panelWebhookOptions("vifnet-site"), [lead], {}, "fr");
-    expect(fr.bodies).toEqual([withProperties({ channel: "form", locale: "fr" })]);
-    const en = await delivered(panelWebhookOptions("vifnet-site"), [lead], {}, "en");
-    expect(en.bodies).toEqual([withProperties({ channel: "form", locale: "en" })]);
-    const off = await delivered(panelWebhookOptions("vifnet-site", { panelLocale: false }), [lead], {}, "en");
-    expect((off.bodies[0] as { events: { properties: object }[] }).events[0]?.properties).toEqual({ channel: "form" }); // our own body, just built by the code under test
-  });
-
-  it("writes the locale only from a context the kit gave one", () => {
-    const props = (c: LeadWebhookContext) => leadCreatedBody(lead, c, "vifnet-site").events[0]?.properties;
-    expect(props({ ...ctx, panelLocale: "en" })).toEqual({ channel: "form", locale: "en" });
-    expect(props(ctx)).toEqual({ channel: "form" });
   });
 
   it("switched off, sends no sale", async () => {
