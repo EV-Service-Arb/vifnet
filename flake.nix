@@ -135,7 +135,7 @@
           jobsErrors = [ ];
           jobsWarnings = [ ];
           jobsOther = [ "loc-badge" ];
-          containerRelease = { registry = "ghcr.io/service-arb"; };
+          containerRelease = { registry = "ghcr.io/ev-service-arb"; };
           claude = true;
         };
         gitignore = v_flakes.files.gitignore {
