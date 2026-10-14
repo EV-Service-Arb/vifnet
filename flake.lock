@@ -74,16 +74,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1791876804,
-        "narHash": "sha256-lbBkVePNGbG1xq/2fi4LRbIWqQMfdY+ufJl9VRFblTI=",
+        "lastModified": 1792019987,
+        "narHash": "sha256-meB0G2YyKALD/VoQMXtBxaJqyYz3mH636kRyFvF68lk=",
         "owner": "EV-Main",
         "repo": "lib",
-        "rev": "b15031b61d7e9702be8916216eeda7bcb72929d4",
+        "rev": "45270ecfa1dd995348562d2c7ec2e8917d48b152",
         "type": "github"
       },
       "original": {
         "owner": "EV-Main",
-        "ref": "@evinvest/kitstart-v0.20.1",
+        "ref": "@evinvest/kitstart-v0.21.1",
         "repo": "lib",
         "type": "github"
       }
@@ -336,11 +336,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1790715889,
-        "narHash": "sha256-rMJa9s/81UhoD4nGfCeh/Rh59kkZXnKV4NrIU7zFUfE=",
+        "lastModified": 1792018027,
+        "narHash": "sha256-3uoWCKJnTVJQjZJopFUoEu/d2zT0K/wcU4lllch/WHc=",
         "owner": "valeratrades",
         "repo": "v_flakes",
-        "rev": "d41d398a236794073942c81c0e0e79c4779a52a5",
+        "rev": "45c36a8acad47b2e097597040e2fd6b72126e2a2",
         "type": "github"
       },
       "original": {
