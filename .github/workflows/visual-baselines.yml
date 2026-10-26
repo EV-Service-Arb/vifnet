@@ -1,3 +1,5 @@
+%YAML 1.1
+---
 jobs:
   shoot:
     name: Shoot every section (Linux)
@@ -24,11 +26,13 @@ jobs:
     - name: next build
       run: nix develop --command npm run build
     - name: Link @playwright/test
-      run: nix develop --command bash -c 'ln -sfn "$E2E_PLAYWRIGHT_MODULES" tests/e2e/node_modules'
+      run: nix develop --command bash -c 'ln -sfn "$E2E_PLAYWRIGHT_MODULES" 
+        tests/e2e/node_modules'
     - name: tsc (e2e)
       run: nix develop --command npx tsc --noEmit -p tests/e2e
     - name: Playwright
-      run: nix develop --command playwright test -c tests/e2e --update-snapshots=all
+      run: nix develop --command playwright test -c tests/e2e 
+        --update-snapshots=all
     - if: always()
       name: Upload screenshots
       uses: actions/upload-artifact@v4
@@ -42,9 +46,7 @@ jobs:
       with:
         if-no-files-found: ignore
         name: playwright-report
-        path: 'test-results/
-
-          playwright-report/'
+        path: "test-results/\nplaywright-report/"
     timeout-minutes: 30
 name: Visual baselines
 'on':
