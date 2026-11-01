@@ -3,13 +3,13 @@ import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { pricing } from "@/shared/config/env";
 import { PRICING } from "@/shared/config/pricing";
 
-// The panel's internal base for vifnet, as LOCATIONS_API_URL is set in a
-// deploy: the place is `<base>/locations/vifnet`, the price list `<base>/pricing`.
-const SOURCE = "http://panel.test/api/internal/brands/vifnet";
+// sites_panel's internal API, as SITES_PANEL_INTERNAL_URL is set in a deploy: the
+// price list is `<it>/brands/vifnet/pricing`.
+const INTERNAL = "http://panel.test/api/internal";
 
 beforeAll(() => {
   // Read once, lazily, by the first `serverEnv()`.
-  process.env["LOCATIONS_API_URL"] = SOURCE;
+  process.env["SITES_PANEL_INTERNAL_URL"] = INTERNAL;
 });
 
 afterEach(() => {
@@ -31,7 +31,7 @@ describe("the price list from the panel", () => {
   it("is asked of the place source's base, and overrides the baked model", async () => {
     const fetch = answer(200, LIVE);
     expect(await pricing.model()).toEqual(LIVE);
-    expect(fetch).toHaveBeenCalledWith(`${SOURCE}/pricing`, expect.anything());
+    expect(fetch).toHaveBeenCalledWith(`${INTERNAL}/brands/vifnet/pricing`, expect.anything());
   });
 
   it("is the baked model when the panel sets none", async () => {

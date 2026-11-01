@@ -20,7 +20,7 @@ A/B tests on the home page. Three places, each with one job:
   hypotheses — `experiments.declared@1` through the lead webhook's outbox,
   under `PANEL_EXPERIMENTS` (on with the panel v0.4.0).
   An experiment missing from the latest declaration is retired in the panel.
-- **Overrides**: `GET <LOCATIONS_API_URL>/experiments`, the operator's
+- **Overrides**: sites_panel's `GET /brands/vifnet/experiments`, the operator's
   `enabled`, `weights` and `holdout` per key (`experimentOverrides` in
   `shared/config/env.ts`, kitstart's `createExperimentsSource`). Answered
   from memory — the first request waits up to 1.5 s, then 30 s fresh and

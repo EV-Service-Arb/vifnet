@@ -8,15 +8,15 @@ import { loadPlace } from "@/views/place/server";
 import { PlaceSubpage } from "@/views/subpage";
 import { SURFACES, surfaces } from "./support/surfaces";
 
-// The panel's place source (`nix run .#local-stack` in the panel repo, or
-// LOCATIONS_API_URL in a deploy): what it says about vifnet/vifnet is merged
+// sites_panel's place source (`nix run .#local-stack` in the conductor repo, or
+// SITES_PANEL_INTERNAL_URL in a deploy): what it says about vifnet/vifnet is merged
 // over the baked place, and every number on the page follows it.
-const SOURCE = "http://panel.test/api/public";
+const INTERNAL = "http://panel.test/api/internal";
 const LIVE = "+33 6 12 34 56 78";
 
 beforeAll(() => {
   // Read once, lazily, by the first page load (`serverEnv`).
-  process.env["LOCATIONS_API_URL"] = SOURCE;
+  process.env["SITES_PANEL_INTERNAL_URL"] = INTERNAL;
 });
 
 afterEach(() => {
@@ -43,7 +43,7 @@ describe("a phone from the panel", () => {
   it("is asked for at the source, for vifnet", async () => {
     const fetch = answer({ phone: LIVE, whatsapp: LIVE });
     const { view, copy } = await loadPlace(params);
-    expect(fetch).toHaveBeenCalledWith(`${SOURCE}/locations/vifnet?locale=fr`, expect.anything());
+    expect(fetch).toHaveBeenCalledWith(`${INTERNAL}/brands/vifnet/locations/vifnet?locale=fr`, expect.anything());
     expect(view.place.channels).toEqual({ phone: LIVE, whatsapp: LIVE });
     expect(copy.f.phone).toBe(LIVE);
   });

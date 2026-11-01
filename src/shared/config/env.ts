@@ -17,22 +17,22 @@ import { site } from "./site";
 /** Parsed once, lazily: `next build` imports this and must need no secrets. */
 export const serverEnv = createServerEnv(site);
 
-/** The live place data, when `LOCATIONS_API_URL` is set; baked otherwise. */
-export const places = createPlaceSource(site, { baseUrl: () => serverEnv().locationsApiUrl });
+/** The live place data, when `SITES_PANEL_INTERNAL_URL` is set; baked otherwise. */
+export const places = createPlaceSource(site);
 
 /**
- * The live price list from the same base — the panel's
+ * The live price list from the same panel — its
  * `/api/internal/brands/vifnet/pricing` — over `site.pricing`: unset, down,
  * `{}` or a model that does not validate all price from the baked one.
  */
-export const pricing = createPricingSource(site, { baseUrl: () => serverEnv().locationsApiUrl });
+export const pricing = createPricingSource(site);
 
 /**
- * The operator's weights and kill switches from the same base — the panel's
+ * The operator's weights and kill switches from the same panel — its
  * `/api/internal/brands/vifnet/experiments`. Answered from memory (30 s TTL,
  * stale-while-revalidate); unset, down or never answered is `{}`, the code's.
  */
-export const experimentOverrides = createExperimentsSource({ baseUrl: () => serverEnv().locationsApiUrl });
+export const experimentOverrides = createExperimentsSource(site);
 
 /**
  * {@link EXPERIMENTS} as it runs now: wherever a variant is read off a cookie

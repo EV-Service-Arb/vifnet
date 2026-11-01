@@ -1,6 +1,6 @@
 // The panel's internal endpoints for vifnet as the suite needs them, on
-// `E2E_MOCK_PORT` — the base `LOCATIONS_API_URL` names in a deploy
-// (`/api/internal/brands/vifnet`): the live place adds nothing over the baked
+// `E2E_MOCK_PORT`, under the `/api/internal` that `SITES_PANEL_INTERNAL_URL`
+// names in a deploy (kitstart asks `/brands/vifnet/…` below it): the live place adds nothing over the baked
 // one (no number, so no call or WhatsApp anywhere), and the price list is
 // down, so every price on the page and in the leads file is the baked model's.
 // The operator has put every new visitor on booking_provider's b, so a spec

@@ -1,9 +1,9 @@
 # The prod environment of the server, baked into the image as plain env
 # (flake.nix: `prodEnv`). Secret-free: SMTP_URL and SMS_TOKEN (and
 # LEAD_NOTIFY_TO/FROM when used) arrive from the container environment a
-# Secret injects. So do LEAD_WEBHOOK_URL, LEAD_WEBHOOK_KEY_ID and
-# LEAD_WEBHOOK_SECRET, together: the URL alone fails boot, and it is not set
-# here because without it the lead webhook is simply off. POSTHOG_KEY is not a
+# Secret injects; so do LEAD_WEBHOOK_KEY_ID and LEAD_WEBHOOK_SECRET. The
+# addresses (SITES_PANEL_INTERNAL_URL, LEAD_WEBHOOK_URL) are devops', derived
+# from the contract (`connected = true` in flake.nix). POSTHOG_KEY is not a
 # secret: a project's ingest token is public by design — every page view
 # carries it to the browser.
 #
@@ -29,10 +29,4 @@
   # apart by `brand_id`. The experiments (docs/EXPERIMENTS.md) read it too.
   POSTHOG_KEY = "phc_sBwWEgdgockVmfyucBRkTTo6iZ4Y2eApSGorD22WLzj3";
   POSTHOG_HOST = "https://us.i.posthog.com";
-  # sites_panel's internal API for this brand, inside the cluster
-  # (the NetworkPolicy admits vifnet → sites-panel:59121): the live place
-  # (`/locations/vifnet`) and the price list (`/pricing`). Not a secret. Until
-  # the panel has them set it answers `{}`, and the page shows the baked
-  # place and prices, as it does when the panel is down.
-  LOCATIONS_API_URL = "http://sites-panel.service-arb.svc.cluster.local:59121/api/internal/brands/vifnet";
 }

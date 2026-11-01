@@ -33,6 +33,8 @@
         landing = ev.lib.mkLanding {
           inherit pkgs v_flakes sitePort pname prodEnv;
           root = ./.;
+          # reads sites_panel and posts leads to the conductor; devops wires both addresses
+          connected = true;
           # What `npm run build` reads — not the 81 MB of source photos in
           # assets/profile_images, only the web cuts of them.
           buildFiles = [
