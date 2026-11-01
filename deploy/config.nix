@@ -29,10 +29,10 @@
   # apart by `brand_id`. The experiments (docs/EXPERIMENTS.md) read it too.
   POSTHOG_KEY = "phc_sBwWEgdgockVmfyucBRkTTo6iZ4Y2eApSGorD22WLzj3";
   POSTHOG_HOST = "https://us.i.posthog.com";
-  # The Service-Arb panel's internal API for this brand, inside the cluster
-  # (the NetworkPolicy admits vifnet → panel:59120): the live place
+  # sites_panel's internal API for this brand, inside the cluster
+  # (the NetworkPolicy admits vifnet → sites-panel:59121): the live place
   # (`/locations/vifnet`) and the price list (`/pricing`). Not a secret. Until
   # the panel has them set it answers `{}`, and the page shows the baked
   # place and prices, as it does when the panel is down.
-  LOCATIONS_API_URL = "http://panel.service-arb.svc.cluster.local:59120/api/internal/brands/vifnet";
+  LOCATIONS_API_URL = "http://sites-panel.service-arb.svc.cluster.local:59121/api/internal/brands/vifnet";
 }
