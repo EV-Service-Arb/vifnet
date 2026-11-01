@@ -1,8 +1,8 @@
 # vifnet
 ![Lines Of Code](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/valeratrades/b48e6f02c61942200e7d1e3eeabf9bcb/raw/vifnet-loc.json)
 <br>
-[<img alt="ci errors" src="https://img.shields.io/github/actions/workflow/status/Service-Arb/vifnet/errors.yml?branch=main&style=for-the-badge&style=flat-square&label=errors&labelColor=420d09" height="20">](https://github.com/Service-Arb/vifnet/actions?query=branch%3Amain) <!--NB: Won't find it if repo is private-->
-[<img alt="ci warnings" src="https://img.shields.io/github/actions/workflow/status/Service-Arb/vifnet/warnings.yml?branch=main&style=for-the-badge&style=flat-square&label=warnings&labelColor=d16002" height="20">](https://github.com/Service-Arb/vifnet/actions?query=branch%3Amain) <!--NB: Won't find it if repo is private-->
+[<img alt="ci errors" src="https://img.shields.io/github/actions/workflow/status/EV-Service-Arb/vifnet/errors.yml?branch=main&style=for-the-badge&style=flat-square&label=errors&labelColor=420d09" height="20">](https://github.com/EV-Service-Arb/vifnet/actions?query=branch%3Amain) <!--NB: Won't find it if repo is private-->
+[<img alt="ci warnings" src="https://img.shields.io/github/actions/workflow/status/EV-Service-Arb/vifnet/warnings.yml?branch=main&style=for-the-badge&style=flat-square&label=warnings&labelColor=d16002" height="20">](https://github.com/EV-Service-Arb/vifnet/actions?query=branch%3Amain) <!--NB: Won't find it if repo is private-->
 
 The landing site of Vifnet, a cleaning business in France that works at the
 customer's address and has no storefront of its own.
@@ -66,7 +66,7 @@ it as it is; without any of it the site runs as it does alone.
 | Variable | What it does | Unset |
 | --- | --- | --- |
 | `PORT` | the dev server's port | 59082 (`nix run .#dev`), 3000 (`npm run dev`) |
-| `LOCATIONS_API_URL` | the panel's place source, `GET <url>/locations/vifnet?locale=fr`: its phone shows on every surface — header, menu, FAQ, gold band, footer, sticky bar — and the quote card offers the call (and WhatsApp, when given). The same base serves the price list, `GET <url>/pricing`, which overrides the baked one whole, and the experiments' weights and kill switches, `GET <url>/experiments` (docs/EXPERIMENTS.md) | the baked place: no number anywhere, no call or WhatsApp; the baked price list; the experiments as coded |
+| `SITES_PANEL_INTERNAL_URL` | sites_panel's internal API (devops sets it from the contract); the place source, `GET <url>/brands/vifnet/locations/vifnet?locale=fr`: its phone shows on every surface — header, menu, FAQ, gold band, footer, sticky bar — and the quote card offers the call (and WhatsApp, when given). The same API serves the price list, `GET <url>/brands/vifnet/pricing`, which overrides the baked one whole, and the experiments' weights and kill switches, `GET <url>/brands/vifnet/experiments` (docs/EXPERIMENTS.md) | the baked place: no number anywhere, no call or WhatsApp; the baked price list; the experiments as coded |
 | `LEAD_WEBHOOK_URL`, `LEAD_WEBHOOK_KEY_ID`, `LEAD_WEBHOOK_SECRET` | each lead to the panel as a signed `lead.created`; all three or none, and `http:` only to localhost or a `*.svc` host | off |
 | `LEADS_DB_PATH` | the SQLite leads file (and the webhook's outbox) | `~/.local/share/vifnet/leads.db` |
 | `POSTHOG_KEY` (`POSTHOG_HOST`) | analytics and the experiments' events — their results are read in PostHog (docs/EXPERIMENTS.md) | off |
@@ -117,7 +117,7 @@ changing a section:
 
 ```text
 app/             Next routes, each a few lines over a kitstart factory: pages under
-                 [locale]/[location], /quote (and its /booking, /confirm), /og, /health,
+                 [locale]/[location], /quote (and its /booking, /confirm), /og, /health, /.well-known/sa-site,
                  robots, sitemap, the global 404
 src/             the site in Feature-Sliced layers (shared → entities → features → widgets → views);
                  widgets/ are named after the Figma frames (hero, before-after, services, …)

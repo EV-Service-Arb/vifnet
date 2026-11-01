@@ -31,7 +31,7 @@ const ZONES = zonesOf(PLACES[0]?.serviceArea ?? null);
 
 /**
  * The baked price list: what `standard` (recurring cleaning) is priced from
- * until the panel serves one (`GET <LOCATIONS_API_URL>/pricing`), and whenever
+ * until the panel serves one (`/brands/vifnet/pricing`), and whenever
  * the panel is down. Built on kitstart's `test/fixtures/pricing/valid/cleaning.json`.
  *
  * OWNER_TODO: every amount here is a placeholder (`OWNER_TODO` "pricing" in

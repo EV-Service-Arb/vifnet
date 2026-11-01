@@ -49,7 +49,7 @@ test.describe("without JavaScript", () => {
     }
   });
 
-  // The server under test has no panel (LOCATIONS_API_URL), so the place has
+  // The server under test's panel gives the place no number, so it has
   // no number: no page may offer a call or WhatsApp, not even a stand-in.
   for (const path of ["/fr", "/en", "/fr/prices", "/fr/guarantee", "/fr/about"]) {
     test(`${path} offers no phone and no WhatsApp`, async ({ page }) => {

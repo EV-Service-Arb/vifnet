@@ -1,7 +1,7 @@
 import { dirname, join } from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 import { BREAKPOINTS } from "@evinvest/kitstart/testing/e2e";
-import { abState, LEADS_DB, LOCATIONS_API_URL, MESSENGER_DIR, MESSENGER_LOCATIONS_API_URL, MESSENGER_PORT, MOCK_PORT, PORT, POSTHOG_HOST } from "./env";
+import { abState, LEADS_DB, MESSENGER_DIR, MESSENGER_PORT, MESSENGER_SITES_PANEL_INTERNAL_URL, MOCK_PORT, PORT, POSTHOG_HOST, SITES_PANEL_INTERNAL_URL } from "./env";
 
 // Run through the flake (`nix run .#test`), which supplies `@playwright/test`
 // and the nixpkgs-pinned browsers — the pin is what makes a screenshot render
@@ -49,7 +49,7 @@ export default defineConfig({
         TRUSTED_PROXY: "xff:1",
         POSTHOG_KEY: "phc_e2e",
         POSTHOG_HOST,
-        LOCATIONS_API_URL,
+        SITES_PANEL_INTERNAL_URL,
       },
     },
     // The same build with a place that offers both messengers (env.ts,
@@ -68,7 +68,7 @@ export default defineConfig({
         TRUSTED_PROXY: "xff:1",
         POSTHOG_KEY: "phc_e2e",
         POSTHOG_HOST,
-        LOCATIONS_API_URL: MESSENGER_LOCATIONS_API_URL,
+        SITES_PANEL_INTERNAL_URL: MESSENGER_SITES_PANEL_INTERNAL_URL,
       },
     },
   ],

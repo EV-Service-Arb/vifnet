@@ -72,7 +72,7 @@ copy (`src/entities/content`), never in `site`
 or `assets/card.toml`, so no JSON-LD, OG card or notification carries it
 (`tests/site.test.ts`). The frame's sample phone number is the exception: it
 is not shown at all. The number is the place's own, from the panel's place
-source (`LOCATIONS_API_URL`): every surface reads `phoneLink(copy.f.phone)`
+source (`SITES_PANEL_INTERNAL_URL`): every surface reads `phoneLink(copy.f.phone)`
 and renders its number only when there is one, and the card offers the call
 (`tests/live-place.test.ts`); without one, no `tel:` link appears anywhere. OWNER_TODO "design sample content" blocks a launch
 until the owner replaces it. The terms an earlier design proposed and the
@@ -151,7 +151,7 @@ never cached, which asks again at the fresh price.
 The price list is `shared/config/pricing.ts`, placeholder amounts until the
 owner sets them (OWNER_TODO, blocks a launch). The panel's
 `/api/internal/brands/vifnet/pricing`, on the place source's base
-(`LOCATIONS_API_URL`), overrides it whole; unset, down, `{}` or a model that
+(`SITES_PANEL_INTERNAL_URL`), overrides it whole; unset, down, `{}` or a model that
 does not validate, the page and the route price from the baked one. The
 estimate asks the bedrooms itself, so while its tiles are in the form the
 card's optional bedrooms question is not shown.

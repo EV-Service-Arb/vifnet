@@ -8,7 +8,7 @@
     v_flakes.url = "github:valeratrades/v_flakes?ref=v1.6";
     # The lib flake at the tag of the @evinvest/kitstart version in
     # package-lock.json — mkLanding refuses a mismatch.
-    ev.url = "github:EV-Main/lib?ref=@evinvest/kitstart-v0.21.1";
+    ev.url = "github:EV-Main/lib?ref=@evinvest/kitstart-v0.23.0";
     ev.inputs.v_flakes.follows = "v_flakes";
   };
 
@@ -33,6 +33,8 @@
         landing = ev.lib.mkLanding {
           inherit pkgs v_flakes sitePort pname prodEnv;
           root = ./.;
+          # reads sites_panel and posts leads to the conductor; devops wires both addresses
+          connected = true;
           # What `npm run build` reads — not the 81 MB of source photos in
           # assets/profile_images, only the web cuts of them.
           buildFiles = [

@@ -8,7 +8,7 @@ export interface PhoneLink {
 
 /**
  * The number a page shows: the place's own — `copy.f.phone`, `contactOf` over
- * the place merged with the panel's (`LOCATIONS_API_URL`) — as the source
+ * the place merged with the panel's (`SITES_PANEL_INTERNAL_URL`) — as the source
  * wrote it, dialled digits only. `null` while the place has none: every
  * surface then drops its number rather than show a stand-in, so a page never
  * offers a call nobody answers.
