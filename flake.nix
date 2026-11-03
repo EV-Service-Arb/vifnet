@@ -17,6 +17,8 @@
   # the generated repo files, and the release tag.
   outputs = { self, v_flakes, ev }:
     let
+      # vifnet's port in sites' ten of SA_PORT_RANGE: site_conductor's docs/port_range.md
+      SA_PORT = 52822;
       inherit (v_flakes) flake-utils pre-commit-hooks;
       manifest = builtins.fromJSON (builtins.readFile ./package.json);
       pname = manifest.name;
@@ -26,8 +28,15 @@
       let
         pkgs = import v_flakes.default_nixpkgs { inherit system; };
         lib = pkgs.lib;
-        # aquafix is on 59081.
+        # the container's exposed port and the prod env
         sitePort = "59082";
+        # the e2e build under test, so a `nix run .#dev` is never mistaken for it
+        e2ePort = toString (SA_PORT + 5);
+        # landing's e2e app, on e2ePort
+        onE2ePort = name: pkgs.writeShellScript "${pname}-${name}" ''
+          export E2E_PORT=${e2ePort}
+          exec ${landing.apps.${name}.program} "$@"
+        '';
         prodEnv = import ./deploy/config.nix { port = sitePort; };
 
         landing = ev.lib.mkLanding {
@@ -63,11 +72,10 @@
         };
 
 
-        # ── `nix run .#dev`: mkLanding's, but on $PORT when it is set ─────────
-        # mkLanding's dev app passes `--port ${sitePort}`, which beats the PORT
-        # `next dev` would read; a local stack starting this site beside others
-        # (the panel's `nix run .#local-stack`) must choose the port. The rest
-        # of the environment reaches `next dev` as it is (README, "Local stack").
+        # ── `nix run .#dev`: mkLanding's, but on $PORT ───────────────────────
+        # mkLanding's dev app passes `--port ${sitePort}`, the container's; this one
+        # the PORT the dev shell or the conductor's `nix run .#local-stack` sets. The
+        # rest of the environment reaches `next dev` as it is (README, "Local stack").
         runDev = pkgs.writeShellApplication {
           name = "${pname}-dev";
           runtimeInputs = with pkgs; [ nodejs_22 git coreutils ];
@@ -79,7 +87,7 @@
               npm ci
               echo "$want" > "$stamp"
             fi
-            exec npm run dev -- --port "''${PORT:-${sitePort}}"
+            exec npm run dev -- --port "''${PORT:?the dev shell sets it, or the caller}"
           '';
         };
 
@@ -191,7 +199,7 @@
             test = {
               enable = true;
               name = "nix run .#test";
-              entry = landing.apps.test.program;
+              entry = "${onE2ePort "test"}";
               pass_filenames = false;
               stages = [ "pre-push" ];
             };
@@ -200,6 +208,8 @@
       in
       {
         apps = landing.apps // {
+          test = { type = "app"; program = "${onE2ePort "test"}"; };
+          accept-test = { type = "app"; program = "${onE2ePort "accept-test"}"; };
           dev = { type = "app"; program = "${runDev}/bin/${pname}-dev"; };
           publish = { type = "app"; program = "${runPublish}/bin/publish"; };
           generate = { type = "app"; program = "${runGenerate}/bin/generate"; };
@@ -217,6 +227,7 @@
           '';
           nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.treefmt pkgs.nixpkgs-fmt pkgs.vips ]
             ++ pre-commit-check.enabledPackages ++ readme.enabledPackages;
+          env = old.env // { PORT = toString SA_PORT; E2E_PORT = e2ePort; };
           # Where CI links the flake's `@playwright/test` for the e2e specs' tsc.
           E2E_PLAYWRIGHT_MODULES = "${pkgs.playwright-test}/lib/node_modules";
         });

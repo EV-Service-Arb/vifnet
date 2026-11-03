@@ -3,10 +3,10 @@ import { join } from "node:path";
 
 /**
  * What the server under test is started with, shared by the config (which
- * starts it) and the specs (which read what it wrote). A port of its own, so a
- * `nix run .#dev` on 59082 is never mistaken for the build under test.
+ * starts it) and the specs (which read what it wrote). E2E_PORT is the flake's.
  */
-export const PORT = Number(process.env["E2E_PORT"] ?? 59089);
+if (!process.env["E2E_PORT"]) throw new Error("E2E_PORT: the dev shell sets it, and `nix run .#test`");
+export const PORT = Number(process.env["E2E_PORT"]);
 
 /** The panel stand-in (`mock-panel.mjs`), and the base the server under test reads it at. */
 export const MOCK_PORT = Number(process.env["E2E_MOCK_PORT"] ?? PORT + 1);

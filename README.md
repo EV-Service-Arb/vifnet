@@ -51,10 +51,10 @@ npm ci && npm run typecheck && npm run lint && npx vitest run && npm run build &
 <!-- markdownlint-restore -->
 
 ## Usage
-Start the site:
+Start the site, inside the dev shell (`nix develop`), which sets its `PORT`:
 
 ```sh
-nix run .#dev            # http://localhost:59082/fr
+nix run .#dev            # http://localhost:$PORT/fr
 ```
 
 ##### Local stack
@@ -65,7 +65,7 @@ it as it is; without any of it the site runs as it does alone.
 
 | Variable | What it does | Unset |
 | --- | --- | --- |
-| `PORT` | the dev server's port | 59082 (`nix run .#dev`), 3000 (`npm run dev`) |
+| `PORT` | the dev server's port, the dev shell's | `nix run .#dev` refuses to start |
 | `SITES_PANEL_INTERNAL_URL` | sites_panel's internal API (devops sets it from the contract); the place source, `GET <url>/brands/vifnet/locations/vifnet?locale=fr`: its phone shows on every surface — header, menu, FAQ, gold band, footer, sticky bar — and the quote card offers the call (and WhatsApp, when given). The same API serves the price list, `GET <url>/brands/vifnet/pricing`, which overrides the baked one whole, and the experiments' weights and kill switches, `GET <url>/brands/vifnet/experiments` (docs/EXPERIMENTS.md) | the baked place: no number anywhere, no call or WhatsApp; the baked price list; the experiments as coded |
 | `LEAD_WEBHOOK_URL`, `LEAD_WEBHOOK_KEY_ID`, `LEAD_WEBHOOK_SECRET` | each lead to the panel as a signed `lead.created`; all three or none, and `http:` only to localhost or a `*.svc` host | off |
 | `LEADS_DB_PATH` | the SQLite leads file (and the webhook's outbox) | `~/.local/share/vifnet/leads.db` |
@@ -87,7 +87,7 @@ nix build .#container    # OCI image, on Linux
 nix run .#container-smoke  # boot it and hold it to its contract (Linux + docker)
 ```
 
-The image listens on 59082 and keeps leads in `/data`. Its settings come from
+The image listens on the flake's `sitePort` and keeps leads in `/data`. Its settings come from
 `deploy/config.nix`. Pushing a `v*` tag builds the image and publishes it to
 `ghcr.io/service-arb/vifnet`: `nix run .#publish` makes the tag.
 
