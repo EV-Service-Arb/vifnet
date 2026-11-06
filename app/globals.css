@@ -7,7 +7,7 @@
 /* Tailwind v4 does not scan node_modules: name the packages whose markup it
    must see. The landing contract test checks the kitstart line. */
 @source "../node_modules/@evinvest/uikit/dist";
-@source "../node_modules/@evinvest/kitstart/dist";
+@source "../node_modules/@evinvest/sites-tools/dist";
 
 /* Geometry of the Figma file 1wXlPmnmOdKYPDWz6N5EB8, whose names are
    Tailwind's: `--radius` 8 makes the kit's `rounded-md/lg/xl/2xl` 6/8/12/16 as

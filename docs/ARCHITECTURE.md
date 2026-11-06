@@ -1,6 +1,6 @@
 # Architecture
 
-A Next.js App Router site in Feature-Sliced layers on `@evinvest/kitstart`, the
+A Next.js App Router site in Feature-Sliced layers on `@evinvest/sites-tools`, the
 machinery of the Service-Arb landing family (its design:
 `LANDING-ARCHITECTURE.md` in the Service-Arb workspace). The package owns the
 behaviour — routing, the place model and publication gate, the lead funnel and

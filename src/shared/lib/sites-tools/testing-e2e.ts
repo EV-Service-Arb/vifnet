@@ -1,1 +1,1 @@
-export * from "@evinvest/kitstart/testing/e2e";
+export * from "@evinvest/sites-tools/testing/e2e";

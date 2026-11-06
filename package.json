@@ -16,14 +16,14 @@
     "start": "node .next/standalone/server.js",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "size": "kitstart-size",
+    "size": "sites-tools-size",
     "lint": "eslint . && steiger ./src"
   },
   "dependencies": {
     "@evinvest/analytics": "^0.4.0",
     "@evinvest/experiments": "^0.4.0",
     "@evinvest/i18n": "^0.9.0",
-    "@evinvest/kitstart": "^0.25.0",
+    "@evinvest/sites-tools": "^0.26.0",
     "@evinvest/marketing": "^0.3.0",
     "@evinvest/uikit": "^0.31.0",
     "next": "16.4.3",

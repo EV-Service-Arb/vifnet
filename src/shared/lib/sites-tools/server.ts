@@ -1,1 +1,1 @@
-export * from "@evinvest/kitstart/server";
+export * from "@evinvest/sites-tools/server";

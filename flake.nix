@@ -6,9 +6,9 @@
 
   inputs = {
     v_flakes.url = "github:valeratrades/v_flakes?ref=v1.6";
-    # sites_tools at the tag of the @evinvest/kitstart version in
+    # sites_tools at the tag of the @evinvest/sites-tools version in
     # package-lock.json — mkLanding refuses a mismatch.
-    sites_tools.url = "github:EV-Service-Arb/sites_tools?ref=@evinvest/kitstart-v0.25.0";
+    sites_tools.url = "github:EV-Service-Arb/sites_tools?ref=@evinvest/sites-tools-v0.26.0";
     sites_tools.inputs.v_flakes.follows = "v_flakes";
   };
 

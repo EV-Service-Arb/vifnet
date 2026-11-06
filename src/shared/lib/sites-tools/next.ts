@@ -1,1 +1,1 @@
-export * from "@evinvest/kitstart/next";
+export * from "@evinvest/sites-tools/next";

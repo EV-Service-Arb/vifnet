@@ -1,1 +1,1 @@
-export * from "@evinvest/kitstart/react";
+export * from "@evinvest/sites-tools/react";

@@ -14,7 +14,7 @@ leaves out fails the tests rather than rendering in a fallback face.
   (v1.000), instanced at `wdth=100` with weight kept over 400–700 — the four
   weights the text uses, in one file.
 - `Inter-Regular.ttf` — what the OG card (`app/og/route.tsx`) draws with;
-  Satori reads TrueType, not WOFF2. From the `@evinvest/kitstart` template
+  Satori reads TrueType, not WOFF2. From the `@evinvest/sites-tools` template
   ([Inter-OFL.txt](Inter-OFL.txt)).
 
 To rebuild the web files (fonttools with brotli, `pip install fonttools brotli`):

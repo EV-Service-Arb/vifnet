@@ -1,1 +1,1 @@
-export * from "@evinvest/kitstart/proxy";
+export * from "@evinvest/sites-tools/proxy";

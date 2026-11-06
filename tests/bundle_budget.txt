@@ -1,5 +1,5 @@
 # Target gzip bytes of first-load JavaScript on a place page
-# (`/[locale]/[location]`), checked by `kitstart-size` after `next build`
+# (`/[locale]/[location]`), checked by `sites-tools-size` after `next build`
 # (and by `mkLanding`'s bundle-budget check on the Nix build). Since kitstart
 # 0.6.0 it is a target, not a ceiling: up to 20 % over passes with a warning.
 #
