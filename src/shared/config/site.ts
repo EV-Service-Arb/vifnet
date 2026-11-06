@@ -1,4 +1,4 @@
-import { assertLaunchable, cardFact, defineSite, SERVICE_AREA_GATE, type OwnerTodo } from "@evinvest/kitstart";
+import { assertLaunchable, cardFact, defineSite, SERVICE_AREA_GATE, type OwnerTodo } from "@/shared/lib/sites-tools";
 import { COPY_TODO } from "./copy-todo";
 import { i18n } from "./i18n";
 import { LEAD } from "./lead";

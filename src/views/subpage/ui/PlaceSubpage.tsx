@@ -1,5 +1,5 @@
-import { placeGraph, type PlaceView, type PricingModel } from "@evinvest/kitstart";
-import { JsonLd } from "@evinvest/kitstart/react";
+import { placeGraph, type PlaceView, type PricingModel } from "@/shared/lib/sites-tools";
+import { JsonLd } from "@/shared/lib/sites-tools/react";
 import type { ReactNode } from "react";
 import type { Copy } from "@/entities/content";
 import type { Locale } from "@/shared/config/i18n";

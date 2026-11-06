@@ -1,4 +1,4 @@
-import { quoteRoute } from "@evinvest/kitstart/next";
+import { quoteRoute } from "@/shared/lib/sites-tools/next";
 import { after } from "next/server";
 import { TEXT } from "@/entities/content";
 import { experimentSink, withExperimentLead, witnessedDefer } from "@/features/experiment/server";

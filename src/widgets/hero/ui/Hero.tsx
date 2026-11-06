@@ -1,4 +1,4 @@
-import { Section } from "@evinvest/kitstart/react";
+import { Section } from "@/shared/lib/sites-tools/react";
 import type { ReactNode } from "react";
 import type { Copy } from "@/entities/content";
 import { Photo, Stars, TYPE } from "@/shared/ui";

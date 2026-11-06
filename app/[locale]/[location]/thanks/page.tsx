@@ -1,6 +1,6 @@
-import { statusTarget } from "@evinvest/kitstart";
-import { statusMetadata } from "@evinvest/kitstart/next";
-import { StatusScreen } from "@evinvest/kitstart/react";
+import { statusTarget } from "@/shared/lib/sites-tools";
+import { statusMetadata } from "@/shared/lib/sites-tools/next";
+import { StatusScreen } from "@/shared/lib/sites-tools/react";
 import type { Metadata } from "next";
 import { loadPlace } from "@/views/place/server";
 import { site } from "@/shared/config/site";

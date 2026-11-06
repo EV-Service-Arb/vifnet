@@ -1,4 +1,4 @@
-import type { CopySlice, CoreText, LeadCaptureMessengerText, Said as CoreSaid } from "@evinvest/kitstart";
+import type { CopySlice, CoreText, LeadCaptureMessengerText, Said as CoreSaid } from "@/shared/lib/sites-tools";
 import type { Locale } from "@/shared/config/i18n";
 import type { Bedrooms, Subject } from "@/shared/config/lead";
 import type { NavId } from "@/shared/config/nav";

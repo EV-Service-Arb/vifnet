@@ -1,4 +1,4 @@
-import type { BookingProvider, MessengerFacts, MessengerVariant, Place, PricingModel } from "@evinvest/kitstart";
+import type { BookingProvider, MessengerFacts, MessengerVariant, Place, PricingModel } from "@/shared/lib/sites-tools";
 import { leadCaptureText, type Copy } from "@/entities/content";
 import { BEDROOMS, FLOWS, LEAD, MESSAGE_REF_PREFIX, PHOTO_NEEDS, SUBJECTS, type LeadForm, type Subject } from "@/shared/config/lead";
 import { site } from "@/shared/config/site";

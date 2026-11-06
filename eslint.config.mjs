@@ -35,7 +35,7 @@ export default defineConfig([
         {
           patterns: [
             {
-              group: ["@evinvest/kitstart/server", "@evinvest/kitstart/next", "@evinvest/kitstart/next/*", "@/shared/config/env", "@/shared/config/site"],
+              group: ["@/shared/lib/sites-tools/server", "@/shared/lib/sites-tools/next", "@/shared/lib/sites-tools/next-config", "@/shared/config/env", "@/shared/config/site"],
               message: "a client module reads BRAND_PUBLIC and the core, never the server halves or the whole site config",
             },
           ],

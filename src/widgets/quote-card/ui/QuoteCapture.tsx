@@ -1,6 +1,6 @@
 "use client";
 
-import { LeadCapture, type LeadCaptureProps } from "@evinvest/kitstart/react";
+import { LeadCapture, type LeadCaptureProps } from "@/shared/lib/sites-tools/react";
 import { QuoteDone, type QuoteDoneText } from "./QuoteDone";
 
 /**

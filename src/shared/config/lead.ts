@@ -1,4 +1,4 @@
-import { validateLead, type LeadFlow, type LeadSchema } from "@evinvest/kitstart";
+import { validateLead, type LeadFlow, type LeadSchema } from "@/shared/lib/sites-tools";
 
 /**
  * The jobs the quote form offers — the four service cards of the Figma frame,

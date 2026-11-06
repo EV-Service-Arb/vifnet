@@ -1,4 +1,4 @@
-import { sitemapRoute } from "@evinvest/kitstart/next";
+import { sitemapRoute } from "@/shared/lib/sites-tools/next";
 import { places } from "@/shared/config/env";
 import { site } from "@/shared/config/site";
 

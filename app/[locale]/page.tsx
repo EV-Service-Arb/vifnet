@@ -1,6 +1,6 @@
-import { brandMetadata, loadLocale } from "@evinvest/kitstart/next";
-import { PlaceDirectory } from "@evinvest/kitstart/react";
-import { contactOf, placeUrl } from "@evinvest/kitstart";
+import { brandMetadata, loadLocale } from "@/shared/lib/sites-tools/next";
+import { PlaceDirectory } from "@/shared/lib/sites-tools/react";
+import { contactOf, placeUrl } from "@/shared/lib/sites-tools";
 import type { Metadata } from "next";
 import { TEXT } from "@/entities/content";
 import { places } from "@/shared/config/env";

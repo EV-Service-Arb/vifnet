@@ -1,6 +1,6 @@
 import "server-only";
 import { createHash } from "node:crypto";
-import { bookingRequestedProperties, channelOf, leadRef, type BookingRequest, type BookingRequestedProperties, type Lead, type LeadSuspect } from "@evinvest/kitstart";
+import { bookingRequestedProperties, channelOf, leadRef, type BookingRequest, type BookingRequestedProperties, type Lead, type LeadSuspect } from "@/shared/lib/sites-tools";
 import {
   panelChannel,
   panelFlowProperties,
@@ -10,7 +10,7 @@ import {
   type LeadWebhookOptions,
   type PanelFlowProperties,
   type WebhookSigning,
-} from "@evinvest/kitstart/server";
+} from "@/shared/lib/sites-tools/server";
 import { isSubject, PANEL_NEED } from "@/shared/config/lead";
 
 /**

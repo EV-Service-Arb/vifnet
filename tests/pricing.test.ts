@@ -1,4 +1,4 @@
-import { flowOf, labelOf, priceOf, pricingProblemsFor } from "@evinvest/kitstart";
+import { flowOf, labelOf, priceOf, pricingProblemsFor } from "@/shared/lib/sites-tools";
 import { describe, expect, it } from "vitest";
 import { FLOWS, PHOTO_NEEDS, SUBJECTS } from "@/shared/config/lead";
 import { PRICING, zoneId, zonesOf } from "@/shared/config/pricing";

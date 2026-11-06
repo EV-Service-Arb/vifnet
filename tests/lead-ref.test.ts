@@ -1,4 +1,4 @@
-import { isLeadRef } from "@evinvest/kitstart";
+import { isLeadRef } from "@/shared/lib/sites-tools";
 import { afterEach, describe, expect, it } from "vitest";
 import { PANEL_BOOKING } from "@/shared/lib/funnel-event";
 import { panelHarness, type PanelHarness } from "./support/panel-harness";

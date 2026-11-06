@@ -1,4 +1,4 @@
-import type { PricingModel } from "@evinvest/kitstart";
+import type { PricingModel } from "@/shared/lib/sites-tools";
 import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { pricing } from "@/shared/config/env";
 import { PRICING } from "@/shared/config/pricing";

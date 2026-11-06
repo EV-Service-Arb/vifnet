@@ -1,5 +1,5 @@
-import type { PricingModel } from "@evinvest/kitstart";
-import type { LeadCaptureProps } from "@evinvest/kitstart/react";
+import type { PricingModel } from "@/shared/lib/sites-tools";
+import type { LeadCaptureProps } from "@/shared/lib/sites-tools/react";
 import type { Text } from "@/entities/content";
 import type { LeadForm } from "@/shared/config/lead";
 import { COMPACT_LOOK, PRICE_FIRST_LOOK, STEPS_LOOK, type Look } from "./look";

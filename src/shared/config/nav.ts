@@ -1,4 +1,4 @@
-import { perLocale, type PlaceView } from "@evinvest/kitstart";
+import { perLocale, type PlaceView } from "@/shared/lib/sites-tools";
 import type { Locale } from "./i18n";
 import { site } from "./site";
 

@@ -1,6 +1,6 @@
 import type { ExperimentConfig, OverriddenConfig } from "@evinvest/experiments";
-import type { BookingProvider, MessengerVariant } from "@evinvest/kitstart";
-import type { AbSwitcherExperiment } from "@evinvest/kitstart/react";
+import type { BookingProvider, MessengerVariant } from "@/shared/lib/sites-tools";
+import type { AbSwitcherExperiment } from "@/shared/lib/sites-tools/react";
 import type { LeadForm } from "./lead";
 
 /**

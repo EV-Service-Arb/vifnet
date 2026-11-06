@@ -1,4 +1,4 @@
-import { siteReportRoute } from "@evinvest/kitstart/next";
+import { siteReportRoute } from "@/shared/lib/sites-tools/next";
 import { site } from "@/shared/config/site";
 
 /** What the live sources answer now, for the conductor. */

@@ -1,6 +1,6 @@
 import "server-only";
-import { statusTarget } from "@evinvest/kitstart";
-import { StatusScreen } from "@evinvest/kitstart/react";
+import { statusTarget } from "@/shared/lib/sites-tools";
+import { StatusScreen } from "@/shared/lib/sites-tools/react";
 import { copyFor } from "@/entities/content";
 import type { Locale } from "@/shared/config/i18n";
 import { site } from "@/shared/config/site";

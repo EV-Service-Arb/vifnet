@@ -15,7 +15,7 @@ export async function register(): Promise<void> {
   const { serverEnv, notifier, webhook } = await import("@/shared/config/env");
   const { EXPERIMENTS, EXPERIMENT_SUMMARIES } = await import("@/shared/config/experiments");
   const { PANEL_EXPERIMENTS } = await import("@/shared/lib/funnel-event");
-  const { checkLeadStore, declareExperiments } = await import("@evinvest/kitstart/server");
+  const { checkLeadStore, declareExperiments } = await import("@/shared/lib/sites-tools/server");
   notifier();
   await checkLeadStore(serverEnv());
   webhook()?.start();

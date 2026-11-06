@@ -1,7 +1,7 @@
 import { cookieName, forcedVariant } from "@evinvest/experiments";
 import { abProxy } from "@evinvest/experiments/next";
-import { createRouting, parsePlaceParam } from "@evinvest/kitstart";
-import { createProxy, GONE_HEADER, LANG_COOKIE } from "@evinvest/kitstart/proxy";
+import { createRouting, parsePlaceParam } from "@/shared/lib/sites-tools";
+import { createProxy, GONE_HEADER, LANG_COOKIE } from "@/shared/lib/sites-tools/proxy";
 import { NextResponse, type NextRequest } from "next/server";
 import { liveExperiments } from "@/shared/config/env";
 import { EXPERIMENTS, type ExperimentKey, FORCE_PARAM, type LiveExperiments, QA_COOKIE, QA_PAUSED_COOKIE } from "@/shared/config/experiments";

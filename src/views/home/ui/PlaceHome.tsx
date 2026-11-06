@@ -1,5 +1,5 @@
-import { channelsAvailable, contactOf, faqPageNode, messengerFacts, placeGraph, type AnalyticsTarget, type PlaceView, type PricingModel } from "@evinvest/kitstart";
-import { AbSwitcher, JsonLd } from "@evinvest/kitstart/react";
+import { channelsAvailable, contactOf, faqPageNode, messengerFacts, placeGraph, type AnalyticsTarget, type PlaceView, type PricingModel } from "@/shared/lib/sites-tools";
+import { AbSwitcher, JsonLd } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { ExperimentScope } from "@/features/experiment";
 import { abSwitcherExperiments, BOOKING_ARMS, QA_COOKIE } from "@/shared/config/experiments";

@@ -1,4 +1,4 @@
-import type { LeadCapturePart } from "@evinvest/kitstart/react";
+import type { LeadCapturePart } from "@/shared/lib/sites-tools/react";
 
 /** `LeadCapture`'s parts as a class map. */
 export type Look = Readonly<Partial<Record<LeadCapturePart, string>>>;

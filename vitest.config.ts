@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { buildEnv } from "@evinvest/kitstart/next/config";
+import { buildEnv } from "./src/shared/lib/sites-tools/next-config";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({

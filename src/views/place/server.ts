@@ -1,6 +1,6 @@
 import "server-only";
-import { contactOf, type PlaceView } from "@evinvest/kitstart";
-import { placeMetadata } from "@evinvest/kitstart/next";
+import { contactOf, type PlaceView } from "@/shared/lib/sites-tools";
+import { placeMetadata } from "@/shared/lib/sites-tools/next";
 import type { Metadata } from "next";
 import { copyFor, type Copy } from "@/entities/content";
 import { loadPlaceView } from "@/entities/place/server";

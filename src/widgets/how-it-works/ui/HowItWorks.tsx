@@ -1,4 +1,4 @@
-import { Section } from "@evinvest/kitstart/react";
+import { Section } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { BandHead } from "@/shared/ui";
 

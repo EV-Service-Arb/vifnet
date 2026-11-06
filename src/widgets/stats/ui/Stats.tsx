@@ -1,4 +1,4 @@
-import { Section } from "@evinvest/kitstart/react";
+import { Section } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 
 /** The frame's stats strip (9:202 / 14:577): four figures on forest-mid, 2 × 2 on a phone. */

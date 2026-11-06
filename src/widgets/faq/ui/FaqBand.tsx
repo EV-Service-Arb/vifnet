@@ -1,4 +1,4 @@
-import { Faq, Section } from "@evinvest/kitstart/react";
+import { Faq, Section } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { phoneLink } from "@/shared/lib/phone";
 import { TYPE } from "@/shared/ui";

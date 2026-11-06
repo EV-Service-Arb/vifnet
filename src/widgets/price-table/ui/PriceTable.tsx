@@ -1,5 +1,5 @@
-import { formatCents } from "@evinvest/kitstart";
-import { Section } from "@evinvest/kitstart/react";
+import { formatCents } from "@/shared/lib/sites-tools";
+import { Section } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { FEATURED, SUBJECTS, type Subject } from "@/shared/config/lead";
 import type { FromPrices } from "@/shared/lib/from-price";

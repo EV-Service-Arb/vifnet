@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { defineSectionSuite } from "@evinvest/kitstart/testing/e2e";
+import { defineSectionSuite } from "../../src/shared/lib/sites-tools/testing-e2e";
 
 // One visual baseline per band of the Figma frame at both breakpoints, named
 // like its bands; adding a section is one line. Bands the site links to are

@@ -1,4 +1,4 @@
-import { withLang } from "@evinvest/kitstart/react";
+import { withLang } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { phoneLink } from "@/shared/lib/phone";
 import { Logo } from "@/shared/ui";

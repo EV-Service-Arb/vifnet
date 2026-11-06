@@ -1,4 +1,4 @@
-import { Button, Section } from "@evinvest/kitstart/react";
+import { Button, Section } from "@/shared/lib/sites-tools/react";
 import type { Copy, ReviewKey } from "@/entities/content";
 import { Icon, Stars, TYPE } from "@/shared/ui";
 import { ReviewCard } from "./ReviewCard";

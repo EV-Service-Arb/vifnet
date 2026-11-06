@@ -1,7 +1,7 @@
 "use client";
 
-import { brandStatusTarget } from "@evinvest/kitstart";
-import { StatusScreen } from "@evinvest/kitstart/react";
+import { brandStatusTarget } from "@/shared/lib/sites-tools";
+import { StatusScreen } from "@/shared/lib/sites-tools/react";
 import { useParams, usePathname } from "next/navigation";
 import { copyFor } from "@/entities/content";
 import { i18n } from "@/shared/config/i18n";

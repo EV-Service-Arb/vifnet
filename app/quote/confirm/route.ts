@@ -1,4 +1,4 @@
-import { confirmRoute } from "@evinvest/kitstart/next";
+import { confirmRoute } from "@/shared/lib/sites-tools/next";
 import { leadCaptureText, TEXT } from "@/entities/content";
 import { pricing } from "@/shared/config/env";
 import { site } from "@/shared/config/site";

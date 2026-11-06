@@ -1,5 +1,5 @@
 import { DatabaseSync } from "node:sqlite";
-import { MIN_FILL_MS, normalizePhone } from "@evinvest/kitstart";
+import { MIN_FILL_MS, normalizePhone } from "../../src/shared/lib/sites-tools/index";
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { abState, LEADS_DB } from "./env";
 import { freshMobile } from "./support/mobile";

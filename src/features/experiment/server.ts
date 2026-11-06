@@ -1,7 +1,7 @@
 import "server-only";
 import { AsyncLocalStorage } from "node:async_hooks";
 import type { AnalyticsSink } from "@evinvest/analytics";
-import { CHANNEL_FIELD, LEAD_CHANNELS, submitTagsOf, type LeadChannel } from "@evinvest/kitstart";
+import { CHANNEL_FIELD, LEAD_CHANNELS, submitTagsOf, type LeadChannel } from "@/shared/lib/sites-tools";
 import { EXPERIMENT_EVENTS, type LiveExperiments } from "@/shared/config/experiments";
 import { assignedBy } from "@/shared/lib/experiments";
 

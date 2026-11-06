@@ -2,7 +2,7 @@
 
 import { cookieName } from "@evinvest/experiments";
 import { ExperimentTracker, readCookie } from "@evinvest/experiments/react";
-import type { AnalyticsTarget } from "@evinvest/kitstart";
+import type { AnalyticsTarget } from "@/shared/lib/sites-tools";
 import { type ReactNode, useCallback, useEffect, useMemo } from "react";
 import { QA_COOKIE } from "@/shared/config/experiments";
 import { contactOf, experimentEvent, experimentSink } from "../model/events";

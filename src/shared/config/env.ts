@@ -9,7 +9,7 @@ import {
   leadWebhook,
   type LeadNotifier,
   type LeadWebhook,
-} from "@evinvest/kitstart/server";
+} from "@/shared/lib/sites-tools/server";
 import { panelWebhookOptions } from "@/shared/lib/funnel-event";
 import { EXPERIMENTS, type LiveExperiments } from "./experiments";
 import { site } from "./site";

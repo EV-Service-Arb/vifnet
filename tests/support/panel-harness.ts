@@ -1,9 +1,9 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { MIN_FILL_MS } from "@evinvest/kitstart";
-import { bookingRoute, quoteRoute } from "@evinvest/kitstart/next";
-import { leadNotifier, leadWebhook, parseServerEnv } from "@evinvest/kitstart/server";
+import { MIN_FILL_MS } from "@/shared/lib/sites-tools";
+import { bookingRoute, quoteRoute } from "@/shared/lib/sites-tools/next";
+import { leadNotifier, leadWebhook, parseServerEnv } from "@/shared/lib/sites-tools/server";
 import { site } from "@/shared/config/site";
 import { panelWebhookOptions, type PanelSwitches } from "@/shared/lib/funnel-event";
 

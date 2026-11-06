@@ -1,4 +1,4 @@
-import { AreaChips, Section } from "@evinvest/kitstart/react";
+import { AreaChips, Section } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { TYPE } from "@/shared/ui";
 

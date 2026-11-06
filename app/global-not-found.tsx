@@ -1,5 +1,5 @@
 import "./globals.css";
-import { GONE_HEADER, parseGoneHeader } from "@evinvest/kitstart";
+import { GONE_HEADER, parseGoneHeader } from "@/shared/lib/sites-tools";
 import { headers } from "next/headers";
 import { site } from "@/shared/config/site";
 import { display, text } from "@/shared/ui/fonts";

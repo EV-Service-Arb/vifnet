@@ -1,4 +1,4 @@
-import { Button } from "@evinvest/kitstart/react";
+import { Button } from "@/shared/lib/sites-tools/react";
 import type { Copy } from "@/entities/content";
 import { phoneLink } from "@/shared/lib/phone";
 import { Icon } from "@/shared/ui";

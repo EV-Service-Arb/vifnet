@@ -1,5 +1,5 @@
-import { createPlaceView, placeGraph } from "@evinvest/kitstart";
-import { testLead } from "@evinvest/kitstart/testing";
+import { createPlaceView, placeGraph } from "@/shared/lib/sites-tools";
+import { testLead } from "@/shared/lib/sites-tools/testing";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";

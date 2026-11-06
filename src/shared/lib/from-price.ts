@@ -1,4 +1,4 @@
-import { flowOf, priceOf, type PricingInput, type PricingInputs, type PricingModel } from "@evinvest/kitstart";
+import { flowOf, priceOf, type PricingInput, type PricingInputs, type PricingModel } from "@/shared/lib/sites-tools";
 import { FLOWS, SUBJECTS, type Subject } from "@/shared/config/lead";
 
 /**

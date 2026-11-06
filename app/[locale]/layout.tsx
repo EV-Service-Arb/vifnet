@@ -1,5 +1,5 @@
 import "../globals.css";
-import { loadLocale, metadataBase } from "@evinvest/kitstart/next";
+import { loadLocale, metadataBase } from "@/shared/lib/sites-tools/next";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { site } from "@/shared/config/site";

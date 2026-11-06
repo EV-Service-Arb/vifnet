@@ -1,5 +1,5 @@
 import "server-only";
-import { createPlaceLoader } from "@evinvest/kitstart/next";
+import { createPlaceLoader } from "@/shared/lib/sites-tools/next";
 import { places } from "@/shared/config/env";
 import { site } from "@/shared/config/site";
 import { placeOfLocation } from "@/shared/lib/experiments";

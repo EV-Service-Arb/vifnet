@@ -1,4 +1,4 @@
-import { telHref } from "@evinvest/kitstart";
+import { telHref } from "@/shared/lib/sites-tools";
 
 /** A number as a page prints it and dials it. */
 export interface PhoneLink {

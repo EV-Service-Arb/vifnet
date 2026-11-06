@@ -1,4 +1,4 @@
-import { Field, FieldLabel, FormSelect, type FormSelectOption } from "@evinvest/kitstart/react";
+import { Field, FieldLabel, FormSelect, type FormSelectOption } from "@/shared/lib/sites-tools/react";
 import { EXTRAS } from "@/shared/config/lead";
 import { Icon } from "@/shared/ui/Icon";
 import { AFTER_PHONE, FIELD } from "./look";

@@ -1,4 +1,4 @@
-import type { StatusCopy } from "@evinvest/kitstart";
+import type { StatusCopy } from "@/shared/lib/sites-tools";
 import type { Facts, Text } from "./types";
 
 const status = (

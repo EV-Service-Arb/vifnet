@@ -1,4 +1,4 @@
-import type { OwnerTodo } from "@evinvest/kitstart";
+import type { OwnerTodo } from "@/shared/lib/sites-tools";
 import type { Locale } from "./i18n";
 
 /** An owner-unconfirmed term, and how it would read in each language. */

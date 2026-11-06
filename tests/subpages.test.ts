@@ -1,4 +1,4 @@
-import { createPlaceView, pointSuffixes, sitemapFor, type Place } from "@evinvest/kitstart";
+import { createPlaceView, pointSuffixes, sitemapFor, type Place } from "@/shared/lib/sites-tools";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";

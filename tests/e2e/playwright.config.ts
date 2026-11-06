@@ -1,6 +1,6 @@
 import { dirname, join } from "node:path";
 import { defineConfig, devices } from "@playwright/test";
-import { BREAKPOINTS } from "@evinvest/kitstart/testing/e2e";
+import { BREAKPOINTS } from "../../src/shared/lib/sites-tools/testing-e2e";
 import { abState, LEADS_DB, MESSENGER_DIR, MESSENGER_PORT, MESSENGER_SITES_PANEL_INTERNAL_URL, MOCK_PORT, PORT, POSTHOG_HOST, SITES_PANEL_INTERNAL_URL } from "./env";
 
 // Run through the flake (`nix run .#test`), which supplies `@playwright/test`

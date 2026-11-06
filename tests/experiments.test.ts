@@ -1,11 +1,11 @@
 import type { AnalyticsSink } from "@evinvest/analytics";
 import { applyOverrides } from "@evinvest/experiments";
-import { declarationProblem } from "@evinvest/kitstart/server";
+import { declarationProblem } from "@/shared/lib/sites-tools/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { contactOf, experimentEvent } from "@/features/experiment/model/events";
 import { withExperimentLead, witnessedDefer } from "@/features/experiment/server";
-import { BOOKING_EXPERIMENT, bookingOf, messengerFacts, type MessengerFacts } from "@evinvest/kitstart";
-import { messengerRuleDisagreements } from "@evinvest/kitstart/testing";
+import { BOOKING_EXPERIMENT, bookingOf, messengerFacts, type MessengerFacts } from "@/shared/lib/sites-tools";
+import { messengerRuleDisagreements } from "@/shared/lib/sites-tools/testing";
 import { abSwitcherExperiments, BOOKING_ARMS, EXPERIMENT_SUMMARIES, EXPERIMENTS } from "@/shared/config/experiments";
 import { LEAD } from "@/shared/config/lead";
 import { site } from "@/shared/config/site";

@@ -1,4 +1,4 @@
-import { cardFact } from "@evinvest/kitstart";
+import { cardFact } from "@/shared/lib/sites-tools";
 
 /**
  * The brand facts a client component may know — the error boundary prints

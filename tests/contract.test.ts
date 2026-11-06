@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { describeLandingContract } from "@evinvest/kitstart/testing";
+import { describeLandingContract } from "@/shared/lib/sites-tools/testing";
 import { TEXT } from "@/entities/content";
 import { OWNER_TODO, site } from "@/shared/config/site";
 

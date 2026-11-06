@@ -1,4 +1,4 @@
-import type { LeadCaptureText, MessengerFacts, MessengerKind, MessengerVariant } from "@evinvest/kitstart";
+import type { LeadCaptureText, MessengerFacts, MessengerKind, MessengerVariant } from "@/shared/lib/sites-tools";
 import type { MessengerCopy } from "@/entities/content";
 import { AFTER_PHONE, type Look, WIDE_BUTTON } from "./look";
 

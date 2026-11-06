@@ -1,4 +1,4 @@
-import { createLocaleRegistry } from "@evinvest/kitstart";
+import { createLocaleRegistry } from "@/shared/lib/sites-tools";
 
 /**
  * Every language carries a prefix: a new site launches with no legacy URLs to

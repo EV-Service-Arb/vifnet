@@ -1,4 +1,4 @@
-import { priceOf, pricingProblems, type PricingInputs, type PricingModel } from "@evinvest/kitstart";
+import { priceOf, pricingProblems, type PricingInputs, type PricingModel } from "@/shared/lib/sites-tools";
 import { describe, expect, it } from "vitest";
 import { PRICING } from "@/shared/config/pricing";
 import { fromPrices, minimumCents } from "@/shared/lib/from-price";

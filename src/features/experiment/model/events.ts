@@ -1,5 +1,5 @@
 import { createBeaconSink, type AnalyticsSink } from "@evinvest/analytics";
-import { contactChannel, type AnalyticsTarget } from "@evinvest/kitstart";
+import { contactChannel, type AnalyticsTarget } from "@/shared/lib/sites-tools";
 import { EXPERIMENT_EVENTS, EXPERIMENT_PROPS } from "@/shared/config/experiments";
 
 type Props = Record<string, unknown>;

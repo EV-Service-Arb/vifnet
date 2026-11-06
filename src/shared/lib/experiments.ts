@@ -1,5 +1,5 @@
 import { cookieName, resolveVariant } from "@evinvest/experiments";
-import type { MessengerFacts, MessengerVariant } from "@evinvest/kitstart";
+import type { MessengerFacts, MessengerVariant } from "@/shared/lib/sites-tools";
 import { EXPERIMENTS, type ExperimentKey, LEAD_FORMS, type LiveExperiments, MESSENGER_ARMS, QA_COOKIE, type VariantOf } from "@/shared/config/experiments";
 import type { LeadForm } from "@/shared/config/lead";
 

@@ -1,4 +1,4 @@
-import { bookingRoute } from "@evinvest/kitstart/next";
+import { bookingRoute } from "@/shared/lib/sites-tools/next";
 import { serverEnv, webhook } from "@/shared/config/env";
 
 /**

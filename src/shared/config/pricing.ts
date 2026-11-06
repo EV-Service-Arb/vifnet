@@ -1,4 +1,4 @@
-import type { MultiplyOption, PricingModel, ServiceArea } from "@evinvest/kitstart";
+import type { MultiplyOption, PricingModel, ServiceArea } from "@/shared/lib/sites-tools";
 import { PLACES } from "./places";
 
 /** A commune's name as a model slug (`[a-z0-9_-]{1,40}`): "Saint-Étienne" → "saint-etienne". */

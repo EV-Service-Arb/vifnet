@@ -1,4 +1,4 @@
-import { LEAD_CAPTURE_TEXT, type LeadCaptureText } from "@evinvest/kitstart";
+import { LEAD_CAPTURE_TEXT, type LeadCaptureText } from "@/shared/lib/sites-tools";
 import type { Locale } from "@/shared/config/i18n";
 import type { Text } from "../model/types";
 
