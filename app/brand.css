@@ -32,6 +32,7 @@
   --chart-3: #b7791f;
   --chart-4: #c8352a;
   --chart-5: #1f4d2e;
+  --chart-6: #62748e;
   --hover: #f0f7f0;
   --ink-mid: #45556c;
   --ink-soft: #62748e;
@@ -71,6 +72,7 @@
   --chart-3: #d9a441;
   --chart-4: #e0564b;
   --chart-5: #a9bfae;
+  --chart-6: #87918c;
   --hover: #1a3a28;
   --ink-mid: #b7bdba;
   --ink-soft: #87918c;
@@ -81,5 +83,5 @@
 
 [data-brand="vifnet"] {
   --brand-font-sans: "Instrument Sans";
-  --brand-font-display: "Fraunces";
+  --brand-font-serif: "Fraunces";
 }

@@ -20,7 +20,7 @@ export function QuoteDone({ text, phone, priced }: { text: QuoteDoneText; phone:
       <span className="flex size-12 items-center justify-center rounded-full bg-positive text-white">
         <Icon name="check" className="size-5" />
       </span>
-      <p className="mt-3 font-display text-xl leading-7 font-bold text-brand">{text.title}</p>
+      <p className="mt-3 font-serif text-xl leading-7 font-bold text-brand">{text.title}</p>
       {!priced && (
         <p className="mt-1 text-sm leading-5 text-ink-soft">
           {text.body[0]}

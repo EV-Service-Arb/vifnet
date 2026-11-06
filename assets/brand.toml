@@ -68,6 +68,7 @@ chart-2 = "#6aa84f"
 chart-3 = "#b7791f"
 chart-4 = "#c8352a"
 chart-5 = "#1f4d2e"
+chart-6 = "#62748e" # ink-soft: the frame draws no sixth series
 
 [colors.dark]
 background = "#0f2419"
@@ -104,9 +105,10 @@ chart-2 = "#4cb87a"
 chart-3 = "#d9a441"
 chart-4 = "#e0564b"
 chart-5 = "#a9bfae"
+chart-6 = "#87918c"
 
 [fonts]
 # Self-hosted (`src/shared/ui/fonts.ts`); `app/globals.css` points the roles
 # at the loaded faces. Fraunces for headings, Instrument Sans for text.
-display = "Fraunces"
+serif = "Fraunces"
 text = "Instrument Sans"

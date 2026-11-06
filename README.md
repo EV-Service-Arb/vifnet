@@ -7,7 +7,7 @@
 The landing site of Vifnet, a cleaning business in France that works at the
 customer's address and has no storefront of its own.
 
-A Next.js app on [`@evinvest/kitstart`](https://github.com/EV-invest/lib/tree/main/ts/kitstart),
+A Next.js app on [`@evinvest/kitstart`](https://github.com/EV-Service-Arb/sites_tools/tree/main/ts/kitstart),
 the machinery the Service-Arb landings share (routing, the place model and its
 publication gate, the quote form and its lead store, SEO), built to the Figma
 file `1wXlPmnmOdKYPDWz6N5EB8`, band for band: header, hero with the quote

@@ -14,7 +14,7 @@ export function ProofAside({ copy, quoteHref }: { copy: Copy; quoteHref: string 
         {t.stats.map(stat => (
           <div key={stat.label} className="flex flex-col-reverse items-center gap-0.5">
             <dt className="text-xs leading-4 text-white/60">{stat.label}</dt>
-            <dd className="font-display text-2xl leading-8 font-bold text-primary">{stat.value}</dd>
+            <dd className="font-serif text-2xl leading-8 font-bold text-primary">{stat.value}</dd>
           </div>
         ))}
       </dl>

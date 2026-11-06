@@ -67,27 +67,6 @@
         "type": "github"
       }
     },
-    "ev": {
-      "inputs": {
-        "v_flakes": [
-          "v_flakes"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793566706,
-        "narHash": "sha256-7C+RO9kW0STEuz2LxKeMuLg/mApbbaIg/AR4Rs40Eic=",
-        "owner": "EV-Main",
-        "repo": "lib",
-        "rev": "36b4462fa3d48af0dfe76d957d3295bebe5ad2fe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "EV-Main",
-        "ref": "@evinvest/kitstart-v0.23.0",
-        "repo": "lib",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -283,7 +262,7 @@
     },
     "root": {
       "inputs": {
-        "ev": "ev",
+        "sites_tools": "sites_tools",
         "v_flakes": "v_flakes"
       }
     },
@@ -306,6 +285,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "892c035d7c2ff75acd5da10424a47ab454e1f3dc",
+        "type": "github"
+      }
+    },
+    "sites_tools": {
+      "inputs": {
+        "v_flakes": [
+          "v_flakes"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793944340,
+        "narHash": "sha256-8h4oytiC+N5Khhd5OOw4hPxej8LjeGd/Q/vluUrCYuo=",
+        "owner": "EV-Service-Arb",
+        "repo": "sites_tools",
+        "rev": "7dc36aa8a57972aa3128c92a0de242c72784dd6c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EV-Service-Arb",
+        "ref": "@evinvest/kitstart-v0.25.0",
+        "repo": "sites_tools",
         "type": "github"
       }
     },

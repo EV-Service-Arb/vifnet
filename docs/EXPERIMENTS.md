@@ -141,7 +141,7 @@ screen. While `ab__qa` has a value, that browser's experiment events say
 `forced` filter leaves them out, and a traffic insight does too once it
 filters `forced` is not `true`. kitstart's lead-form events (`lead_form_*`,
 `lead_booking_*`, the server's `lead_form_submit`) are not tagged yet
-(EV-invest/lib#219): a QA lead still counts there.
+(EV-Main/web_std#219): a QA lead still counts there.
 
 **Staying in QA.** Moving around the site keeps the forced arms: the logo,
 the "home" link, the language switch (`/fr?ab_lead_form=b` → `/en` renders

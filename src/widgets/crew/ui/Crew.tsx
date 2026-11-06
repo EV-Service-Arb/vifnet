@@ -15,7 +15,7 @@ export function Crew({ copy, id }: { copy: Copy; id: string }) {
       <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {t.members.map(member => (
           <li key={member.name} className="flex flex-col gap-4 rounded-2xl border border-border bg-background p-6">
-            <span aria-hidden="true" className="flex size-16 items-center justify-center rounded-full bg-brand font-display text-xl leading-7 font-bold text-primary">
+            <span aria-hidden="true" className="flex size-16 items-center justify-center rounded-full bg-brand font-serif text-xl leading-7 font-bold text-primary">
               {member.initials}
             </span>
             <div className="flex flex-col gap-0.5">

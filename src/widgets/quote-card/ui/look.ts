@@ -130,10 +130,10 @@ export const STEPS_LOOK: Look = {
   ...BASE,
   ...STEPS,
   // The service's question, on a screen of its own, is its heading — not only for assistive technology.
-  label: "[legend&]:not-sr-only [legend&]:mb-5 [legend&]:font-display [legend&]:text-xl [legend&]:leading-7 [legend&]:font-bold [legend&]:text-brand",
+  label: "[legend&]:not-sr-only [legend&]:mb-5 [legend&]:font-serif [legend&]:text-xl [legend&]:leading-7 [legend&]:font-bold [legend&]:text-brand",
   needs: "gap-2 sm:grid-cols-1",
   need: `${TILE} vf-chevron-right min-h-[52px] justify-between px-4 py-1`,
-  estimateLegend: "mb-5 font-display text-xl leading-7 font-bold text-brand",
+  estimateLegend: "mb-5 font-serif text-xl leading-7 font-bold text-brand",
   estimateGrid: "gap-2 [&:has([name$=bedrooms])]:grid-cols-3 [&:has([name$=surface])]:grid-cols-2",
   estimateOption: `${TILE} min-h-[52px] justify-center px-2 py-1 text-center peer-[[name$=frequency]]:justify-between peer-[[name$=frequency]]:px-4 peer-[[name$=frequency]]:text-left`,
   optionPrice: "text-base leading-6 font-bold text-brand",
@@ -157,10 +157,10 @@ export const PRICE_FIRST_LOOK: Look = {
   estimateLegend: "mb-1.5 text-sm leading-5 font-semibold text-brand",
   // The frequencies are a screen of their own: their question is its heading, as in b.
   estimateInput:
-    "[&:has([name$=frequency])>legend]:mb-5 [&:has([name$=frequency])>legend]:font-display [&:has([name$=frequency])>legend]:text-xl [&:has([name$=frequency])>legend]:leading-7 [&:has([name$=frequency])>legend]:font-bold",
+    "[&:has([name$=frequency])>legend]:mb-5 [&:has([name$=frequency])>legend]:font-serif [&:has([name$=frequency])>legend]:text-xl [&:has([name$=frequency])>legend]:leading-7 [&:has([name$=frequency])>legend]:font-bold",
   estimateGrid: "gap-1.5 [&:has([name$=bedrooms])]:grid-cols-4 [&:has([name$=surface])]:grid-cols-3",
   estimateOption: `${TILE} justify-center px-1 py-1 text-center peer-[[name$=frequency]]:grid peer-[[name$=frequency]]:min-h-[72px] peer-[[name$=frequency]]:grid-cols-[1fr_auto] peer-[[name$=frequency]]:content-center peer-[[name$=frequency]]:items-center peer-[[name$=frequency]]:gap-x-3 peer-[[name$=frequency]]:gap-y-1 peer-[[name$=frequency]]:px-4 peer-[[name$=frequency]]:py-3 peer-[[name$=frequency]]:text-left peer-[[name$=frequency]]:text-base peer-[[name$=frequency]]:leading-6 peer-[[name$=frequency]]:font-semibold peer-[[name$=frequency]]:text-brand has-[.vf-badge]:border-2 has-[.vf-badge]:border-primary has-[.vf-badge]:bg-card`,
   badge: "vf-badge col-start-1 row-start-1 justify-self-start rounded-full bg-primary px-2.5 py-1 text-[10px] leading-[15px] font-bold tracking-[1px] text-brand uppercase",
-  optionPrice: "col-start-2 row-span-2 row-start-1 font-display text-xl leading-7 font-bold text-brand",
-  photos: "gap-5 border-0 p-0 [&>a]:h-[52px] [&>a]:border-0 [&>a]:bg-brand [&>a]:text-base [&>a]:leading-6 [&>a]:font-bold [&>a]:text-white [&>p:first-child]:font-display [&>p:first-child]:text-xl [&>p:first-child]:leading-7 [&>p:first-child]:font-bold [&>p:first-child]:text-brand [&>p:nth-child(2)]:-mt-4 [&>p:nth-child(2)]:leading-5",
+  optionPrice: "col-start-2 row-span-2 row-start-1 font-serif text-xl leading-7 font-bold text-brand",
+  photos: "gap-5 border-0 p-0 [&>a]:h-[52px] [&>a]:border-0 [&>a]:bg-brand [&>a]:text-base [&>a]:leading-6 [&>a]:font-bold [&>a]:text-white [&>p:first-child]:font-serif [&>p:first-child]:text-xl [&>p:first-child]:leading-7 [&>p:first-child]:font-bold [&>p:first-child]:text-brand [&>p:nth-child(2)]:-mt-4 [&>p:nth-child(2)]:leading-5",
 };

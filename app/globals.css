@@ -27,7 +27,7 @@
   /* The face is the one `next/font` loaded (src/shared/ui/fonts.ts), not the
      family name brand.toml can spell. */
   --brand-font-sans: var(--font-instrument-sans);
-  --brand-font-display: var(--font-fraunces);
+  --brand-font-serif: var(--font-fraunces);
   /* The messengers' own colours, for their app badges (Figma "Lead form A/B",
      messengers v3): their brand rules, not the palette's. */
   --whatsapp: #25d366;

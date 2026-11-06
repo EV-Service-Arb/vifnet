@@ -12,7 +12,7 @@ export function Guarantee({ copy }: { copy: Copy }) {
           <Icon name="shield-check" className="size-7" />
         </span>
         <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-          <h2 className="font-display text-2xl leading-8 font-bold text-white md:text-3xl md:leading-9">{t.title}</h2>
+          <h2 className="font-serif text-2xl leading-8 font-bold text-white md:text-3xl md:leading-9">{t.title}</h2>
           <p className="text-base leading-[26px] text-white/60">{t.body}</p>
         </div>
       </div>

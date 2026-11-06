@@ -157,7 +157,7 @@ export function QuoteCard({ copy, id, place, contact, renderedAt, pricing, need,
       callbackOpen={false}
       head={
         <div className={`flex flex-col gap-1 ${shape.head}`}>
-          <h2 className="font-display text-2xl leading-8 font-bold text-brand">{t.quoteForm.title}</h2>
+          <h2 className="font-serif text-2xl leading-8 font-bold text-brand">{t.quoteForm.title}</h2>
           {lede !== null && <p className="text-sm leading-5 text-ink-soft">{lede}</p>}
         </div>
       }

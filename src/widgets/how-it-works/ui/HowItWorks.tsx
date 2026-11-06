@@ -15,7 +15,7 @@ export function HowItWorks({ copy, id }: { copy: Copy; id: string }) {
       <ol className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6">
         {s.items.map((step, i) => (
           <li key={step.title} className="flex flex-col gap-3 border-t-3 border-primary pt-6">
-            <span aria-hidden="true" className="font-display text-4xl leading-10 font-bold text-positive">
+            <span aria-hidden="true" className="font-serif text-4xl leading-10 font-bold text-positive">
               {i + 1}
             </span>
             <h3 className="text-base leading-6 font-bold text-ink">{step.title}</h3>
