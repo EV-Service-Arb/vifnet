@@ -1,4 +1,4 @@
-import { priceOf, pricingProblems, type PricingInputs, type PricingModel } from "@/shared/lib/sites-tools";
+import { checkPricingModel, priceOf, type PricingInputs, type PricingModel } from "@/shared/lib/sites-tools";
 import { describe, expect, it } from "vitest";
 import { PRICING } from "@/shared/config/pricing";
 import { fromPrices, minimumCents } from "@/shared/lib/from-price";
@@ -58,7 +58,7 @@ describe("where a job's price starts", () => {
   it("equals the minimum of priceOf over every combination, for any valid list", () => {
     for (let seed = 1; seed <= 200; seed++) {
       const model = randomModel(seed);
-      expect(pricingProblems(model), `seed ${seed}`).toEqual([]);
+      expect(checkPricingModel(model).problems, `seed ${seed}`).toEqual([]);
       expect(minimumCents(model, "standard"), `seed ${seed}`).toBe(bruteMinimum(model, "standard"));
       expect(minimumCents(model, "deep"), `seed ${seed}`).toBe(bruteMinimum(model, "deep"));
     }

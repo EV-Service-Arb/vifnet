@@ -17,34 +17,18 @@ contact facts come from `assets/card.toml`, inlined at build.
 
 ## Leads reach the panel
 
-Each lead also goes to the Service-Arb panel as one `lead.created` event
-(`sa.funnel.v1`, built in `src/shared/lib/funnel-event.ts`): queued in the
-leads file before the visitor is thanked, signed, and retried from there.
+Each lead also goes to the Service-Arb panel as one `lead.created`, and a
+priced lead's booking request as `booking.requested`: sites-tools builds,
+signs and queues every body (its README, "Lead webhook") from the panel's
+contract, `@evinvest/sites-contract`, which this repo never restates.
 `LEAD_WEBHOOK_URL`, `LEAD_WEBHOOK_KEY_ID` and `LEAD_WEBHOOK_SECRET` come from
 the container's Secret, all three or none; without the URL the webhook is off,
 which is why it is not in `deploy/config.nix`.
-The event's `pii.need` is the job in the operator's words — the French name
-of its service card (`PANEL_NEED`), not the posted id. Why a lead is suspect
-(`rate_limited`, `too_fast`) goes as `properties.suspect`, and a
-rate-limited lead goes at all (`PANEL_SUSPECT`, on since the panel v0.3.0
-accepts the property). Each such switch stays off until the panel in
-production accepts what it adds: it refuses an unknown property, and the
-outbox would park the lead. The lead's id is kitstart's `leadRef`, the
-reference the page was answered with, so a booking joins its lead.
-The visit's analytics id goes as `properties.analytics_id`, so the panel's
-lead events join the visit in PostHog — under `PANEL_ANALYTICS_ID`, on with
-the panel v0.4.0. Under `PANEL_EXPERIMENTS` (on with the same release) the
-same outbox carries one `experiments.declared@1` per start
+The one thing the brand says is the lead's `pii.need`: the job in the
+operator's words — the French name of its service card (`PANEL_NEED`), not
+the posted id. The same outbox carries one `experiments.declared` per start
 (`instrumentation.ts`): the experiments this build runs, for the panel's
-"Experiments" screen. A site that ships before that panel is in production
-sees such rows go `dead`; `kitstart-outbox requeue` on the pod sends them
-again once the panel is upgraded.
-
-A messenger lead (WhatsApp, the Telegram bot: experiment `lead_channel`) goes
-as one under `PANEL_MESSENGER` — `channel` `whatsapp` / `telegram` and the
-chat's reference `message_ref` (`VF-7K3F`, `MESSAGE_REF_PREFIX`) — on, since
-the panel that takes them ships first; without it the panel would see a
-`form` with no reference.
+"Experiments" screen.
 
 ## A place without an address
 
@@ -143,8 +127,7 @@ pages, and experiment `booking_provider` (docs/EXPERIMENTS.md) picks between
 the call (`manual`) and a Google schedule. Without a schedule the card
 promises the call and offers an optional preference, which it posts to
 `/quote/booking`; that queues `booking.requested@1` on the lead webhook's
-outbox under `PANEL_BOOKING` (on since panel v0.4.0), after the lead's own
-`lead.created` is delivered. A
+outbox, after the lead's own `lead.created` is delivered. A
 plain post whose price changed under the page lands on `/quote/confirm`,
 never cached, which asks again at the fresh price.
 
@@ -155,6 +138,3 @@ owner sets them (OWNER_TODO, blocks a launch). The panel's
 does not validate, the page and the route price from the baked one. The
 estimate asks the bedrooms itself, so while its tiles are in the form the
 card's optional bedrooms question is not shown.
-`lead.created` carries the sale (`flow`, `quoted_cents`, `pricing_valid_from`,
-`estimate_inputs`) under `PANEL_FLOW` (`shared/lib/funnel-event.ts`), on since
-the panel v0.3.0 accepts those properties.

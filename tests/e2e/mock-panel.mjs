@@ -24,7 +24,7 @@ const json = (res, status, body) => {
 /** The place as each mode's panel serves it. */
 const PLACES = {
   "": {},
-  "/messengers": { phone: "+33 6 12 34 56 78", whatsapp: "+33 6 12 34 56 78", telegram: "vifnet_devis_bot" },
+  "/messengers": { phone: "+33612345678", whatsapp: "+33612345678", telegram: "vifnet_devis_bot" },
 };
 
 createServer((req, res) => {

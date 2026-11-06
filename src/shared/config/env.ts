@@ -10,8 +10,8 @@ import {
   type LeadNotifier,
   type LeadWebhook,
 } from "@/shared/lib/sites-tools/server";
-import { panelWebhookOptions } from "@/shared/lib/funnel-event";
 import { EXPERIMENTS, type LiveExperiments } from "./experiments";
+import { isSubject, PANEL_NEED } from "./lead";
 import { site } from "./site";
 
 /** Parsed once, lazily: `next build` imports this and must need no secrets. */
@@ -55,17 +55,10 @@ let hook: LeadWebhook | null | undefined;
 
 /**
  * Each lead as `lead.created` to the Service-Arb panel, through the outbox in
- * the leads file; `null` without `LEAD_WEBHOOK_URL`. With it,
- * `LEAD_WEBHOOK_KEY_ID` and `LEAD_WEBHOOK_SECRET` are required — checked at
- * boot (`instrumentation.ts`).
+ * the leads file; `null` without `LEAD_WEBHOOK_URL`. Built at boot
+ * (`instrumentation.ts`).
  */
 export function webhook(): LeadWebhook | null {
-  if (hook !== undefined) return hook;
-  const env = serverEnv();
-  const target = env.leadWebhook;
-  hook =
-    target === null
-      ? null
-      : leadWebhook(site, env, panelWebhookOptions(target.keyId));
+  if (hook === undefined) hook = leadWebhook(site, serverEnv(), { needLabel: subject => (isSubject(subject) ? PANEL_NEED[subject] : subject) });
   return hook;
 }

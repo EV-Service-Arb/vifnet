@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { copyFor, leadCaptureText, REVIEWS, TEXT, type Facts } from "@/entities/content";
 import { COPY_TODO } from "@/shared/config/copy-todo";
 import { i18n, type Locale } from "@/shared/config/i18n";
-import { BEDROOMS, SUBJECTS } from "@/shared/config/lead";
+import { BEDROOMS, PANEL_NEED, SUBJECTS } from "@/shared/config/lead";
 import { OWNER_TODO, site } from "@/shared/config/site";
 
 // Completeness is the compiler's: `FR` and `EN` satisfy one `Text`. What the
@@ -50,6 +50,11 @@ describe("the copy", () => {
 
   it("has the same shape in both languages", () => {
     expect(copyOf("en").map(([p]) => p)).toEqual(copyOf("fr").map(([p]) => p));
+  });
+
+  // LEAD-FORMS-REVIEW-2026-10-03 #13: the operator read `deep`, `standard`.
+  it("names each job to the panel as its French service card does", () => {
+    for (const subject of SUBJECTS) expect(PANEL_NEED[subject], subject).toBe(TEXT.fr.services.items[subject].name);
   });
 
   // One pattern per `copy:` line of OWNER_TODO, in each language: confirming a

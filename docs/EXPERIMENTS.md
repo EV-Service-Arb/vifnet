@@ -17,8 +17,7 @@ A/B tests on the home page. Three places, each with one job:
   hypothesis (`EXPERIMENT_SUMMARIES`).
 - **Declaration**: at every start (`instrumentation.ts`) the server tells the
   panel which experiments this build runs, with their variants, weights and
-  hypotheses — `experiments.declared@1` through the lead webhook's outbox,
-  under `PANEL_EXPERIMENTS` (on with the panel v0.4.0).
+  hypotheses — `experiments.declared@1` through the lead webhook's outbox.
   An experiment missing from the latest declaration is retired in the panel.
 - **Overrides**: sites_panel's `GET /brands/vifnet/experiments`, the operator's
   `enabled`, `weights` and `holdout` per key (`experimentOverrides` in
@@ -88,8 +87,7 @@ A/B tests on the home page. Three places, each with one job:
   random per page, so exposure and lead are compared as aggregates per
   variant, not per visitor. (A lead's later life — contacted, won, paid —
   reaches PostHog from the panel, as `sa_*` events, under the visit's
-  analytics id, which `lead.created` carries: `PANEL_ANALYTICS_ID`, on with
-  the panel v0.4.0.)
+  analytics id, which `lead.created` carries.)
 
 ## Reading the result
 
@@ -287,7 +285,7 @@ the arms pool; aquafix is to run it with the same arms.
   providers contract").
 - **Control (a)**: `manual` — the card says "Nous vous rappelons pour fixer le
   créneau" and offers an optional preference (a day, a part of the day),
-  sent as `booking.requested@1` (`PANEL_BOOKING`, on since panel v0.4.0).
+  sent as `booking.requested@1`.
 - **Variant (b)**: `google_calendar` — "Choisir un créneau" opens the
   schedule in a new tab, nothing loaded before the click. Google takes no
   parameter, so the card asks the visitor to enter the same phone number
@@ -345,8 +343,7 @@ where the quote goes. Each arm is kitstart's `LeadCapture` `messenger` variant
   keeps the card's height; a computer gets the QR code (the card grows there).
 - **The lead.** A messenger tap posts the lead first (`channel=whatsapp|telegram`,
   the chat reference `message_ref`, `VF-7K3F`), then opens the chat;
-  `lead.created` says the channel and carries the reference under
-  `PANEL_MESSENGER`.
+  `lead.created` says the channel and carries the reference.
 - **Primary metric**: leads that reached us per exposure — form and callback
   leads (`experiment_lead` with `channel` `form` | `callback`) plus messenger
   leads the customer confirmed by writing (the panel's `lead.messaged`, in

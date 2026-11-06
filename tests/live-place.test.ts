@@ -12,7 +12,7 @@ import { SURFACES, surfaces } from "./support/surfaces";
 // SITES_PANEL_INTERNAL_URL in a deploy): what it says about vifnet/vifnet is merged
 // over the baked place, and every number on the page follows it.
 const INTERNAL = "http://panel.test/api/internal";
-const LIVE = "+33 6 12 34 56 78";
+const LIVE = "+33612345678";
 
 beforeAll(() => {
   // Read once, lazily, by the first page load (`serverEnv`).

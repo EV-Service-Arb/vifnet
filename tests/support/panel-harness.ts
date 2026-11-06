@@ -5,7 +5,6 @@ import { MIN_FILL_MS } from "@/shared/lib/sites-tools";
 import { bookingRoute, quoteRoute } from "@/shared/lib/sites-tools/next";
 import { leadNotifier, leadWebhook, parseServerEnv } from "@/shared/lib/sites-tools/server";
 import { site } from "@/shared/config/site";
-import { panelWebhookOptions, type PanelSwitches } from "@/shared/lib/funnel-event";
 
 export interface PanelHarness {
   /** A lead through the real quote route, as the card's script posts it; the JSON answer. */
@@ -21,10 +20,9 @@ const RENDERED_AT = Date.UTC(2026, 9, 4, 9);
 
 /**
  * The site's quote and booking routes over one leads file and the lead
- * webhook wired as `env.ts` wires it (`panelWebhookOptions`), the panel a
- * fetch that accepts everything and keeps the bodies.
+ * webhook, the panel a fetch that accepts everything and keeps the bodies.
  */
-export function panelHarness(switches: Partial<PanelSwitches> = {}): PanelHarness {
+export function panelHarness(): PanelHarness {
   const dir = mkdtempSync(join(tmpdir(), "vifnet-panel-"));
   const env = parseServerEnv(site, {
     LEADS_DB_PATH: join(dir, "leads.db"),
@@ -35,7 +33,7 @@ export function panelHarness(switches: Partial<PanelSwitches> = {}): PanelHarnes
   const bodies: unknown[] = [];
   const quiet = { info: () => {}, warn: () => {}, error: () => {} };
   const hook = leadWebhook(site, env, {
-    ...panelWebhookOptions("vifnet-site", switches),
+    needLabel: subject => subject,
     fetch: async (input, init) => {
       bodies.push(JSON.parse(await new Request(input, init).text()));
       return new Response(JSON.stringify({ results: [{ index: 0, status: "accepted" }] }), { status: 207 });

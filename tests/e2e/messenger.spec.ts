@@ -1,4 +1,5 @@
 import { expect, test, type Locator, type Page, type Route } from "@playwright/test";
+import { MESSAGE_REF } from "../../src/shared/lib/sites-tools/index";
 import { abState, MESSENGER_PORT, POSTHOG_HOST } from "./env";
 
 // Experiment `lead_channel` (MESSENGER-CHANNELS-SPEC §4, docs/EXPERIMENTS.md):
@@ -43,11 +44,11 @@ const card = (page: Page) => page.locator("#devis");
 /** The card's height, to the pixel. */
 const height = async (page: Page) => Math.round(await card(page).evaluate(node => node.getBoundingClientRect().height));
 
-/** The prefilled message names the lead by the brand's reference (`Réf. VF-7K3F`, Crockford base32). */
-const REF = /R%C3%A9f\.%20VF-[0-9A-HJKMNP-TV-Z]{4,8}(&|$)/;
-const BOT = /^https:\/\/t\.me\/vifnet_devis_bot\?start=VF-[0-9A-HJKMNP-TV-Z]{4,8}$/;
+/** The prefilled message names the lead by the brand's reference (`Réf. VF-7K3F`; its shape is `MESSAGE_REF`). */
+const REF = /R%C3%A9f\.%20VF-\w+(&|$)/;
+const BOT = /^https:\/\/t\.me\/vifnet_devis_bot\?start=VF-\w+$/;
 /** Figma's preview line; kitstart joins a number to its unit with a no-break space (`77 €`, `70 m²`). */
-const PREVIEW = /Ménage standard · 2 ch\. · 40–70\sm² · 2 sem\. · env\. 77\s€ · 63130 · Réf\. VF-[0-9A-HJKMNP-TV-Z]{4,8}/;
+const PREVIEW = /Ménage standard · 2 ch\. · 40–70\sm² · 2 sem\. · env\. 77\s€ · 63130 · Réf\. VF-\w+/;
 const MESSENGER_LINKS = 'a[href*="wa.me/"], a[href*="t.me/"]';
 
 /** The message a wa.me link opens WhatsApp with, decoded. */
@@ -99,6 +100,7 @@ async function previewSaysTheJob(page: Page): Promise<void> {
 async function messageSaysTheJob(link: Locator): Promise<void> {
   await expect(link).toHaveAttribute("href", REF);
   const text = await messageOf(link);
+  expect(/Réf\. (\S+)/.exec(text)?.[1]).toMatch(MESSAGE_REF);
   expect(text).toMatch(/env\.\s77\s€ \/ passage/);
   expect(text).toMatch(/Fréquence\s:\s/);
   expect(text).toContain("63130");

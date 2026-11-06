@@ -1,6 +1,6 @@
 import type { AnalyticsSink } from "@evinvest/analytics";
 import { applyOverrides } from "@evinvest/experiments";
-import { declarationProblem } from "@/shared/lib/sites-tools/server";
+import { experimentsDeclaredBody } from "@/shared/lib/sites-tools/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { contactOf, experimentEvent } from "@/features/experiment/model/events";
 import { withExperimentLead, witnessedDefer } from "@/features/experiment/server";
@@ -422,12 +422,8 @@ describe("experiment_lead on /quote", () => {
 });
 
 describe("the declaration to the panel", () => {
-  it("has a one-line hypothesis for every test, and the panel would take each", () => {
-    for (const [key, spec] of Object.entries(EXPERIMENTS)) {
-      const summary = EXPERIMENT_SUMMARIES[key as keyof typeof EXPERIMENTS];
-      expect(summary.length, key).toBeLessThanOrEqual(200);
-      expect(summary, key).not.toContain("\n");
-      expect(declarationProblem(key, spec, summary), key).toBeNull();
-    }
+  it("is taken whole by the panel, every test with its hypothesis", () => {
+    const { skipped } = experimentsDeclaredBody(EXPERIMENTS, { brandId: "vifnet", sourceId: "vifnet-site", at: new Date(), summaries: EXPERIMENT_SUMMARIES });
+    expect(skipped).toEqual([]);
   });
 });

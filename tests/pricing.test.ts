@@ -1,4 +1,4 @@
-import { flowOf, labelOf, priceOf, pricingProblemsFor } from "@/shared/lib/sites-tools";
+import { flowOf, labelOf, priceOf, checkPricingModel } from "@/shared/lib/sites-tools";
 import { describe, expect, it } from "vitest";
 import { FLOWS, PHOTO_NEEDS, SUBJECTS } from "@/shared/config/lead";
 import { PRICING, zoneId, zonesOf } from "@/shared/config/pricing";
@@ -7,7 +7,7 @@ import { OWNER_TODO, site } from "@/shared/config/site";
 describe("the baked price list", () => {
   it("is the site's, and validates for every locale the site speaks", () => {
     expect(site.pricing).toBe(PRICING);
-    expect(pricingProblemsFor(PRICING, site.i18n.locales)).toEqual([]);
+    expect(checkPricingModel(PRICING, site.i18n.locales).problems).toEqual([]);
   });
 
   it("names every question and every answer in French and English", () => {

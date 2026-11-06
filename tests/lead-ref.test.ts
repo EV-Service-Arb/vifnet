@@ -1,6 +1,5 @@
 import { isLeadRef } from "@/shared/lib/sites-tools";
 import { afterEach, describe, expect, it } from "vitest";
-import { PANEL_BOOKING } from "@/shared/lib/funnel-event";
 import { panelHarness, type PanelHarness } from "./support/panel-harness";
 
 const QUOTE = { subject: "deep", locality: "75015", mobile: "06 12 34 56 78", name: "Amanda Reyes" };
@@ -32,7 +31,7 @@ describe("a lead's reference, from the page to the panel", () => {
   });
 });
 
-/** FORM-VARIANTS-SPEC "Booking amendments" 3: `booking.requested@1` behind `panelBooking`. */
+/** FORM-VARIANTS-SPEC "Booking amendments" 3: `booking.requested@1`. */
 describe("a priced lead's booking request", () => {
   async function bookedLead(h: PanelHarness): Promise<string> {
     const { body } = await h.post({ ...ESTIMATE, submission_id: SUBMISSION });
@@ -42,27 +41,8 @@ describe("a priced lead's booking request", () => {
     return body.lead;
   }
 
-  it("is queued by the production wiring", async () => {
-    expect(PANEL_BOOKING).toBe(true);
+  it("goes after its lead's lead.created, joined by the lead's reference", async () => {
     harness = panelHarness();
-    const ref = await bookedLead(harness);
-    const answer = await harness.book({ submission: SUBMISSION, lead_ref: ref, provider: "manual", preferred_part: "morning" });
-    expect(answer).toEqual({ status: 200, body: { ok: true, queued: true } });
-    const sent = await harness.deliver();
-    expect(sent.map(b => eventOf(b).type)).toEqual(["lead.created", "booking.requested"]);
-  });
-
-  it("switched off, is answered and dropped", async () => {
-    harness = panelHarness({ panelBooking: false });
-    const ref = await bookedLead(harness);
-    const answer = await harness.book({ submission: SUBMISSION, lead_ref: ref, provider: "manual", preferred_part: "morning" });
-    expect(answer).toEqual({ status: 200, body: { ok: true, queued: false } });
-    const sent = await harness.deliver();
-    expect(sent.map(b => eventOf(b).type)).toEqual(["lead.created"]);
-  });
-
-  it("switched on, goes after its lead's lead.created, joined by the lead's reference", async () => {
-    harness = panelHarness({ panelBooking: true });
     const ref = await bookedLead(harness);
     const answer = await harness.book({ submission: SUBMISSION, lead_ref: ref, provider: "manual", preferred_part: "morning" });
     expect(answer).toEqual({ status: 200, body: { ok: true, queued: true } });
@@ -83,7 +63,7 @@ describe("a priced lead's booking request", () => {
   });
 
   it("books nothing for a reference the page was not answered with", async () => {
-    harness = panelHarness({ panelBooking: true });
+    harness = panelHarness();
     await bookedLead(harness);
     const answer = await harness.book({ submission: SUBMISSION, lead_ref: "lead-1-00000000", provider: "manual" });
     expect(answer.status).toBe(404);

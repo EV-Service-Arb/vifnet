@@ -19,7 +19,7 @@ export function zoneId(name: string): string {
  * ×1 until the owner says otherwise, or one zone for wherever the crew goes —
  * the place names no commune yet (OWNER_TODO `places[vifnet].serviceArea`).
  */
-export function zonesOf(area: readonly ServiceArea[] | null): readonly MultiplyOption[] {
+export function zonesOf(area: readonly ServiceArea[] | null): MultiplyOption[] {
   const names = [...new Set((area ?? []).flatMap(a => (a.kind === "localities" ? a.names : [])))];
   const zones = names.map(name => ({ id: zoneId(name), labels: { fr: name, en: name }, multiplyBp: 10_000 }));
   // Two communes whose slugs collide would make the model invalid: one zone then.
