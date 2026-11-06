@@ -295,16 +295,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1793989732,
-        "narHash": "sha256-Rpd+Km9+cNyRRNqJ/gEyergBaZUYcfxsxULkeNXGqL8=",
+        "lastModified": 1793993302,
+        "narHash": "sha256-Rs983l5tu7FTV0ZNg/at10FFhl6fCghnF2nt53eVIvk=",
         "owner": "EV-Service-Arb",
         "repo": "sites_tools",
-        "rev": "80878a14327a98177e51ba5effe9b20ed6698d64",
+        "rev": "ae00203c82ef85e7c5758993e60a66e7e7b5ce61",
         "type": "github"
       },
       "original": {
         "owner": "EV-Service-Arb",
-        "ref": "@evinvest/sites-tools-v0.26.0",
+        "ref": "@evinvest/sites-tools-v0.27.0",
         "repo": "sites_tools",
         "type": "github"
       }

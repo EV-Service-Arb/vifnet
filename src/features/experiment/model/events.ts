@@ -34,7 +34,7 @@ export function experimentEvent(experiment: string, event: string, props: Props,
   return [name, { experiment, ...props, forced }];
 }
 
-// `telegram`: the bot's link in a `lead_channel` arm (kitstart marks it, `t.me` is no contact link to the marketing kit).
+// `telegram`: the bot's link in a `lead_channel` arm (kitstart marks it, `t.me` is no contact link).
 const INTENTS = ["form_open", "booking", "telegram"];
 
 /**
