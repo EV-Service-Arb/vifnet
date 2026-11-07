@@ -295,16 +295,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1794001782,
-        "narHash": "sha256-9cmgAJkoIcYm2lWtOjgyyjR+0NjtHkKPFHpMsTvE/TM=",
+        "lastModified": 1794083762,
+        "narHash": "sha256-rUXdbzS/QRn2x9zarhLB4cs++5cIRRJMmu4d7YMvhuw=",
         "owner": "EV-Service-Arb",
         "repo": "sites_tools",
-        "rev": "acbb6bf5b85ec7eb4e9144036f2645783bdceb97",
+        "rev": "9289978179b37ec4ecb5d845165e3a8ffcc8f62c",
         "type": "github"
       },
       "original": {
         "owner": "EV-Service-Arb",
-        "ref": "@evinvest/sites-tools-v0.28.0",
+        "ref": "@evinvest/sites-tools-v0.31.0",
         "repo": "sites_tools",
         "type": "github"
       }
@@ -336,11 +336,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1793024085,
-        "narHash": "sha256-BYYsk8Uh5RWmUPsOM0lzsplraUS/ywUSMCacPT0im/U=",
+        "lastModified": 1794083372,
+        "narHash": "sha256-IV+cTDZY5rIRz8p7Oq7wTfx/icuJmRAEU36mB6O0KJg=",
         "owner": "valeratrades",
         "repo": "v_flakes",
-        "rev": "6486bf4f526dc82de6f6b5806d6307dd67e60c0b",
+        "rev": "b091aa0e67e5fdd080f8adbfbb882669577b8af8",
         "type": "github"
       },
       "original": {
