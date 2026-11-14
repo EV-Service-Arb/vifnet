@@ -30,6 +30,10 @@ the posted id. The same outbox carries one `experiments.declared` per start
 (`instrumentation.ts`): the experiments this build runs, for the panel's
 "Experiments" screen.
 
+The review kit's reviewer page, `/avis/<slug>`, is sites-tools' (`kitPage` and its two routes,
+`KitDocument` its own root layout, both `@evinvest/sites-tools/next/kit`): it asks the conductor what to offer with the same key, so it
+needs the webhook's three settings too.
+
 ## A place without an address
 
 Vifnet goes to its customers. Its place is a `service-area` presence, which
