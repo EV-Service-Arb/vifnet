@@ -128,7 +128,7 @@ export function QuoteCard({ copy, id, place, contact, renderedAt, pricing, need,
       need={need ?? shape.need}
       layout={shape.layout}
       needDisplay={shape.needDisplay}
-      localityStep={shape.localityStep}
+      screens={shape.screens}
       questions={arm === null ? shape.questions : previewed(shape.questions, t.quote.messenger.previewLabels)}
       focusNext
       price="compact"

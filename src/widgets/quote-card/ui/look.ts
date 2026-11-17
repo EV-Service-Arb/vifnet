@@ -88,7 +88,6 @@ const BASE: Look = {
   // After a priced lead: under the Done check, centred like it.
   priced: "-mt-2 items-center gap-1 pb-6 text-center",
   pricedPrice: "text-base leading-6 font-semibold text-brand",
-  pricedNote: "text-sm leading-5 text-ink-soft",
 };
 
 /**

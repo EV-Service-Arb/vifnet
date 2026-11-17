@@ -91,6 +91,7 @@ test.describe("variant c", () => {
     await expect(page.locator("form#devis-form select")).toHaveCount(0);
     await card(page).getByRole("radio", { name: "2 chambres", exact: true }).click();
     await card(page).getByRole("radio", { name: "40 à 70 m²", exact: true }).click();
+    await card(page).getByRole("button", { name: "Voir les prix" }).click();
     await card(page).getByRole("radio", { name: /^Chaque semaine/ }).click();
     const arm = { experiment: "lead_form", variant: "c", layout: "steps" };
     await expect.poll(() => of(sent, "experiment_exposed")).toEqual([expect.objectContaining({ experiment: "lead_form", variant: "c" })]);

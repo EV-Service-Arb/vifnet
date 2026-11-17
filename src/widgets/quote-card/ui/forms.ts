@@ -8,7 +8,7 @@ import { COMPACT_LOOK, PRICE_FIRST_LOOK, STEPS_LOOK, type Look } from "./look";
 export interface FormShape {
   layout: NonNullable<LeadCaptureProps["layout"]>;
   needDisplay?: LeadCaptureProps["needDisplay"];
-  localityStep?: LeadCaptureProps["localityStep"];
+  screens?: LeadCaptureProps["screens"];
   questions: NonNullable<LeadCaptureProps["questions"]>;
   look: Look;
   /** The need asked for the visitor when the page knows none: `price-first` prices the regular clean. */
@@ -55,7 +55,7 @@ export function formShape(form: LeadForm, t: Text, pricing: PricingModel | null)
       return {
         layout: "steps",
         needDisplay: "tiles",
-        localityStep: "with-phone",
+        screens: [{ ask: ["locality", "phone"] }],
         questions: { frequency: { display: "cards" } },
         look: STEPS_LOOK,
         head: "order-1 group-has-[[data-lead-step=need][data-lead-off]]/card:hidden",
@@ -63,10 +63,10 @@ export function formShape(form: LeadForm, t: Text, pricing: PricingModel | null)
     case "price-first":
       return {
         layout: "steps",
-        localityStep: "with-phone",
+        screens: [{ ask: ["bedrooms", "surface"], next: t.quote.seePrices }, { ask: ["locality", "phone"] }],
         questions: {
-          bedrooms: { step: 1, next: t.quote.seePrices, unknown: true, unknownSpan: 2, shortLabels: short.bedrooms },
-          surface: { step: 1, unknown: true, unknownSpan: 2, shortLabels: short.surface },
+          bedrooms: { unknown: true, unknownSpan: 2, shortLabels: short.bedrooms },
+          surface: { unknown: true, unknownSpan: 2, shortLabels: short.surface },
           frequency: { display: "cards", badges: badgeOf(bestFrequency(pricing), t.quote.best) },
         },
         look: PRICE_FIRST_LOOK,

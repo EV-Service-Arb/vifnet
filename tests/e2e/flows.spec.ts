@@ -250,6 +250,7 @@ test.describe("variant c", () => {
     await hydrated(page);
     await card(page).getByRole("radio", { name: "2 chambres", exact: true }).click();
     await card(page).getByRole("radio", { name: "40 à 70 m²", exact: true }).click();
+    await card(page).getByRole("button", { name: "Voir les prix" }).click();
     await card(page).getByRole("radio", { name: /^Chaque semaine/ }).click();
     // 45 + 30 + 10 = 85 €, 15 % off = 72,25 €: 72 €; half back as a tax credit.
     await expect(price(page)).toHaveAttribute("data-price-cents", "7200");
