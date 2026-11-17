@@ -8,7 +8,7 @@
     v_flakes.url = "github:valeratrades/v_flakes?ref=v1.6";
     # sites_tools at the tag of the @evinvest/sites-tools version in
     # package-lock.json — mkLanding refuses a mismatch.
-    sites_tools.url = "github:EV-Service-Arb/sites_tools?ref=@evinvest/sites-tools-v0.33.1";
+    sites_tools.url = "github:EV-Service-Arb/sites_tools?ref=@evinvest/sites-tools-v0.34.0";
     sites_tools.inputs.v_flakes.follows = "v_flakes";
   };
 
@@ -141,7 +141,9 @@
             errors.default = true;
             errors.augment = with landing.particles; [ e2e-typecheck e2e checks container-smoke ];
             warnings.default = true;
-            warnings.augment = [ landing.particles.npm-audit ];
+            warnings.exclude = [ "code-duplication" ];
+            # the copy is one `Text` in two languages, alike line for line
+            warnings.augment = [ landing.particles.npm-audit { name = "code-duplication"; args.excludePatterns = [ "src/entities/content/model/{fr,en}.ts" ]; } ];
             other.augment = [ "loc-badge" ];
           };
           containerRelease = { registry = "ghcr.io/ev-service-arb"; };

@@ -42,8 +42,7 @@ const CHANNEL_ROW = "flex-nowrap gap-2 max-sm:[&>a[href^=tel]]:hidden";
 
 const PROGRESS = "gap-3 [&_[data-slot=progress]]:bg-slate-100 [&_[data-slot=progress-indicator]]:bg-primary";
 const STEP_BACK = "vf-step-back h-5 min-h-0 gap-1 text-sm leading-5 font-semibold text-slate-600 no-underline hover:underline";
-// One "Modifier", after the last chip.
-const ANSWERS = "order-2 gap-1.5 [&>li:not(:last-child)_button>span:last-child]:hidden";
+const ANSWERS = "order-2 gap-1.5";
 
 /**
  * Parts every form shares — the compact card of the spec (§1) on the frame's
@@ -102,8 +101,9 @@ const STEPS: Look = {
   progress: PROGRESS,
   stepBack: STEP_BACK,
   answers: ANSWERS,
-  answer:
-    "vf-chip h-auto min-h-0 gap-1.5 border-0 bg-transparent p-0 text-xs leading-4 shadow-none hover:bg-transparent [&>span:last-child]:text-slate-600 [&>span:nth-child(2)]:inline-flex [&>span:nth-child(2)]:h-[26px] [&>span:nth-child(2)]:items-center [&>span:nth-child(2)]:gap-1 [&>span:nth-child(2)]:rounded-full [&>span:nth-child(2)]:border [&>span:nth-child(2)]:border-input [&>span:nth-child(2)]:bg-slate-50 [&>span:nth-child(2)]:px-2.5 [&>span:nth-child(2)]:font-normal [&>span:nth-child(2)]:text-slate-700",
+  answer: "vf-chip h-auto min-h-0 gap-1.5 border-0 bg-transparent p-0 text-xs leading-4 shadow-none hover:bg-transparent",
+  answerValue: "inline-flex h-[26px] items-center gap-1 rounded-full border border-input bg-slate-50 px-2.5 font-normal text-slate-700",
+  answerChange: "text-slate-600",
   // 20 px between the questions sharing a screen, 12 between the contact fields.
   step: `order-2 ${CONTACT_GRID} has-[>fieldset]:gap-5`,
   // Only with the phone, the last screen.
