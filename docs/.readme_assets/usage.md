@@ -21,9 +21,8 @@ it as it is; without any of it the site runs as it does alone.
 Run the checks:
 
 ```sh
-nix run .#test           # tsc, lint (eslint + steiger), vitest, build, size, Playwright
+nix run .#test           # every check (tsc, lint, vitest, Playwright, the hermetic build + budget, the image's smoke, npm audit); `-- --help` lists them
 nix run .#size           # first-load JS against tests/bundle_budget.txt — the one hard gate
-nix flake check          # the hermetic Nix build and the budget against it
 ```
 
 Build the server and the container image:
@@ -51,9 +50,7 @@ differently, so locally the pixel comparison is skipped. To refresh them after
 changing a section:
 
 1. Run the **Visual baselines** workflow on the branch
-   (`gh workflow run visual-baselines.yml --ref <branch>`). Before that workflow
-   exists on `main`, a CI run of **Errors** on the branch writes any missing
-   baseline and publishes the same artifact.
+   (`gh workflow run visual-baselines.yml --ref <branch>`).
 2. `gh run download <run-id> -n visual-snapshots -D tests/e2e/__screenshots__`
 3. Look at the images, then commit them alone:
    `test: refresh visual baselines (run <run-id>)`.

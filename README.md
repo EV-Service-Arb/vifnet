@@ -1,8 +1,8 @@
 # vifnet
 ![Lines Of Code](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/valeratrades/b48e6f02c61942200e7d1e3eeabf9bcb/raw/vifnet-loc.json)
 <br>
-[<img alt="ci errors" src="https://img.shields.io/github/actions/workflow/status/EV-Service-Arb/vifnet/errors.yml?branch=main&style=for-the-badge&style=flat-square&label=errors&labelColor=420d09" height="20">](https://github.com/EV-Service-Arb/vifnet/actions?query=branch%3Amain) <!--NB: Won't find it if repo is private-->
-[<img alt="ci warnings" src="https://img.shields.io/github/actions/workflow/status/EV-Service-Arb/vifnet/warnings.yml?branch=main&style=for-the-badge&style=flat-square&label=warnings&labelColor=d16002" height="20">](https://github.com/EV-Service-Arb/vifnet/actions?query=branch%3Amain) <!--NB: Won't find it if repo is private-->
+[![errors](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/valeratrades/b48e6f02c61942200e7d1e3eeabf9bcb/raw/vifnet-errors.json)](https://github.com/EV-Service-Arb/vifnet/actions/workflows/errors.yml?query=branch%3Amain)
+[![warnings](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/valeratrades/b48e6f02c61942200e7d1e3eeabf9bcb/raw/vifnet-warnings.json)](https://github.com/EV-Service-Arb/vifnet/actions/workflows/warnings.yml?query=branch%3Amain)
 
 The landing site of Vifnet, a cleaning business in France that works at the
 customer's address and has no storefront of its own.
@@ -75,9 +75,8 @@ it as it is; without any of it the site runs as it does alone.
 Run the checks:
 
 ```sh
-nix run .#test           # tsc, lint (eslint + steiger), vitest, build, size, Playwright
+nix run .#test           # every check (tsc, lint, vitest, Playwright, the hermetic build + budget, the image's smoke, npm audit); `-- --help` lists them
 nix run .#size           # first-load JS against tests/bundle_budget.txt — the one hard gate
-nix flake check          # the hermetic Nix build and the budget against it
 ```
 
 Build the server and the container image:
@@ -105,9 +104,7 @@ differently, so locally the pixel comparison is skipped. To refresh them after
 changing a section:
 
 1. Run the **Visual baselines** workflow on the branch
-   (`gh workflow run visual-baselines.yml --ref <branch>`). Before that workflow
-   exists on `main`, a CI run of **Errors** on the branch writes any missing
-   baseline and publishes the same artifact.
+   (`gh workflow run visual-baselines.yml --ref <branch>`).
 2. `gh run download <run-id> -n visual-snapshots -D tests/e2e/__screenshots__`
 3. Look at the images, then commit them alone:
    `test: refresh visual baselines (run <run-id>)`.
