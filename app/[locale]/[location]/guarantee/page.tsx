@@ -1,15 +1,5 @@
-import type { Metadata } from "next";
-import { loadPlace, placePageMetadata } from "@/views/place/server";
-import { PlaceSubpage } from "@/views/subpage";
+import { subpageRoute } from "../subpage";
 
-type Props = { params: Promise<{ locale: string; location: string }> };
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { view, copy } = await loadPlace(params);
-  return placePageMetadata(view, copy, "guarantee");
-}
-
-export default async function GuaranteePage({ params }: Props) {
-  const { view, copy, renderedAt } = await loadPlace(params);
-  return <PlaceSubpage view={view} copy={copy} page="guarantee" renderedAt={renderedAt} />;
-}
+const route = subpageRoute("guarantee");
+export const generateMetadata = route.generateMetadata;
+export default route.Page;
