@@ -147,7 +147,7 @@
             other.augment = [ "loc-badge" ];
           };
           containerRelease = { registry = "ghcr.io/ev-service-arb"; };
-          figma = { };
+          figma = { on = "gha"; };
           publishCachix = "valeratrades";
           # e2e compares every PR's render to these by its tolerance; this holds a refresh to CI's render
           visualBaselines = { dir = "tests/e2e/__screenshots__"; render = "accept-test"; paths = [ "tests/e2e/__screenshots__/**" ]; };
