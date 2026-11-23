@@ -163,7 +163,6 @@
         readme = v_flakes.readme-fw {
           inherit pkgs pname;
           defaults = true;
-          lastSupportedVersion = null;
           rootDir = ./.;
           badges = [ "loc" "ci" ];
         };
